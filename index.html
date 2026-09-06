@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>GPTify Uzbekistan — Prompt Ustaxonasi (Telegram Mini App)</title>
+
+  <!-- Telegram WebApp SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- App Styles -->
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- 1. Top Header -->
+    <header class="app-header">
+      <div class="brand-cluster" onclick="location.reload()">
+        <div class="brand-logo-box">⚡</div>
+        <div class="brand-meta">
+          <div class="brand-title">GPTify Ustaxona</div>
+          <div class="brand-badge">PROMPT GENERATOR & PLAYGROUND</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a href="https://t.me/gptifyuz" target="_blank" rel="noopener noreferrer" class="header-tg-btn">
+          <span>📢</span> <span>@gptifyuz</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- 2. Hero Banner -->
+    <section class="hero-card">
+      <div class="hero-tag">🛠️ AI Prompt Ustaxonasi</div>
+      <h1 class="hero-title">G‘oyangizni Professional AI Promptga Aylantiring</h1>
+      <p class="hero-desc">
+        Vazifangizni o‘zbekcha yozing yoki O'zbekiston biznesiga moslashtirilgan tayyor qoliplardan foydalaning.
+      </p>
+    </section>
+
+    <!-- 3. Sub-Navigation Tabs -->
+    <nav class="subnav-container" aria-label="Bo'limlar">
+      <button class="subnav-btn active" id="tabBtnGenerator" onclick="switchSubnav('generator')">
+        <span>⚡</span> <span>AI Generator</span>
+      </button>
+      <button class="subnav-btn" id="tabBtnTemplates" onclick="switchSubnav('templates')">
+        <span>🎯</span> <span>Biznes Qoliplar</span>
+      </button>
+      <button class="subnav-btn" id="tabBtnLibrary" onclick="switchSubnav('library')">
+        <span>📚</span> <span>Kutubxona</span>
+      </button>
+    </nav>
+
+    <!-- ===================================================================
+         VIEW 1: AI GENERATOR
+         =================================================================== -->
+    <section id="generatorView" class="section-view">
+      <div class="generator-box">
+
+        <!-- Model Tabs -->
+        <div class="models-scroll-bar">
+          <button class="model-btn active" data-model="chatgpt" onclick="selectModel('chatgpt', this)">
+            <span>💬</span> <span>ChatGPT & Claude</span>
+          </button>
+          <button class="model-btn" data-model="midjourney" onclick="selectModel('midjourney', this)">
+            <span>🎨</span> <span>Midjourney & Flux</span>
+          </button>
+          <button class="model-btn" data-model="kling" onclick="selectModel('kling', this)">
+            <span>🎬</span> <span>Kling & Runway</span>
+          </button>
+          <button class="model-btn" data-model="elevenlabs" onclick="selectModel('elevenlabs', this)">
+            <span>🎙️</span> <span>ElevenLabs</span>
+          </button>
+        </div>
+
+        <!-- Input Area -->
+        <textarea id="generatorInput" class="prompt-textarea" placeholder="Masalan: Yangi ochilgan IT o‘quv markazi uchun Instagramda reklama posti va qiziqtiruvchi sarlavha yozish..."></textarea>
+
+        <!-- Quick Idea Chips -->
+        <div class="presets-chips-row">
+          <span class="presets-label">Tezkor:</span>
+          <button class="preset-chip" onclick="applyPreset('Mijozga yuboriladigan B2B tijorat taklifi (KP) ssenariysi')">📄 B2B KP</button>
+          <button class="preset-chip" onclick="applyPreset('Instagram va Telegram uchun 1 haftalik kontent rejasi')">📅 Kontent Rejasi</button>
+          <button class="preset-chip" onclick="applyPreset('E-tijorat kiyimlari uchun fotorealistik studiya fotosessiyasi vizuali')">📸 Fotosessiya</button>
+          <button class="preset-chip" onclick="applyPreset('30 soniyalik dinamik Reels reklama videosi ssenariysi')">🎬 30s Reels</button>
+          <button class="preset-chip" onclick="applyPreset('Excelda ikki jadvalni solishtirib, farqlarni aniqlovchi murakkab formula')">📊 Excel Formulalari</button>
+        </div>
+
+        <!-- Generate Button -->
+        <button class="generate-btn" onclick="generatePrompt()">
+          <span>⚡</span> <span>Professional Promptni Yaratish</span>
+        </button>
+
+        <!-- Dynamic Output Box -->
+        <div class="output-card" id="generatorOutputCard">
+          <div class="output-header">
+            <div class="output-title">
+              <span>✨</span> <span>Tayyor Professional Prompt:</span>
+            </div>
+            <span class="output-model-badge" id="outputModelBadge">ChatGPT</span>
+          </div>
+
+          <div class="output-text-content" id="generatorOutputText"></div>
+
+          <!-- Actions Strip -->
+          <div class="output-actions-grid">
+            <button class="action-btn copy" id="genCopyBtn" onclick="copyGeneratorPrompt()">
+              <span>📋</span> <span id="genCopyLabel">Nusxalash</span>
+            </button>
+            <button class="action-btn chatgpt" onclick="openGeneratorInChatGPT()">
+              <span>🤖</span> <span>ChatGPT'da ochish</span>
+            </button>
+            <button class="action-btn gemini" onclick="openGeneratorInGemini()">
+              <span>✨</span> <span>Gemini'da ochish</span>
+            </button>
+            <button class="action-btn tg" onclick="shareGeneratorToTelegram()">
+              <span>✈️</span> <span>Ulashish</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VIEW 2: BIZNES QOLIPLARI & VARIABLES BUILDER
+         =================================================================== -->
+    <section id="templatesView" class="section-view" style="display:none;">
+
+      <!-- Category Filter Pills -->
+      <div class="categories-filter-bar">
+        <button class="cat-filter-btn active" id="catBtn-smm" onclick="selectCategory('smm', this)">
+          <span>📱</span> <span>SMM & Instagram</span>
+        </button>
+        <button class="cat-filter-btn" id="catBtn-ecom" onclick="selectCategory('ecom', this)">
+          <span>🛒</span> <span>Uzum & E-Commerce</span>
+        </button>
+        <button class="cat-filter-btn" id="catBtn-biznes" onclick="selectCategory('biznes', this)">
+          <span>💼</span> <span>Didox & Biznes</span>
+        </button>
+        <button class="cat-filter-btn" id="catBtn-it" onclick="selectCategory('it', this)">
+          <span>💻</span> <span>IT & Dasturlash</span>
+        </button>
+        <button class="cat-filter-btn" id="catBtn-visual" onclick="selectCategory('visual', this)">
+          <span>🎨</span> <span>Vizual & AI Media</span>
+        </button>
+      </div>
+
+      <!-- Horizontal Template Cards Slider -->
+      <div class="templates-slider" id="templatesSlider">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+
+      <!-- Interactive Variables Builder Box -->
+      <div class="variables-builder-box" id="variablesBuilderBox">
+        <!-- Rendered dynamically for selected template -->
+      </div>
+
+    </section>
+
+    <!-- ===================================================================
+         VIEW 3: KUTUBXONA (SEARCHABLE PROMPT CATALOGUE)
+         =================================================================== -->
+    <section id="libraryView" class="section-view" style="display:none;">
+
+      <!-- Real-time Search Input -->
+      <div class="library-search-wrap">
+        <span class="library-search-icon">🔍</span>
+        <input type="text" id="libSearchInput" class="library-search-input" placeholder="Promptlar orasidan qidirish (Uzum, Excel, B2B, Reels)..." oninput="handleLibrarySearch(this.value)">
+      </div>
+
+      <!-- Category Filter Chips -->
+      <div class="categories-filter-bar" id="libCategoryChips">
+        <button class="cat-filter-btn active" onclick="filterLibrary('all', this)">Barchasi</button>
+        <button class="cat-filter-btn" onclick="filterLibrary('smm', this)">📱 SMM</button>
+        <button class="cat-filter-btn" onclick="filterLibrary('ecom', this)">🛒 E-Commerce</button>
+        <button class="cat-filter-btn" onclick="filterLibrary('biznes', this)">💼 Biznes & Didox</button>
+        <button class="cat-filter-btn" onclick="filterLibrary('it', this)">💻 IT & Kod</button>
+        <button class="cat-filter-btn" onclick="filterLibrary('visual', this)">🎨 Rasm & Video</button>
+      </div>
+
+      <!-- Library Cards List -->
+      <div class="library-cards-list" id="libraryCardsContainer">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+
+    </section>
+
+    <!-- 4. PDF & Free AI Course Promo Banner -->
+    <aside class="pdf-promo-card">
+      <div class="pdf-promo-top">
+        <span class="pdf-badge">🎁 Bepul Bonus</span>
+        <span style="font-size:11px; color:#a7f3d0; font-weight:700;">@gptifyuz</span>
+      </div>
+      <div class="pdf-promo-title">100+ Professional AI Promptlar PDF To'plami</div>
+      <p class="pdf-promo-desc">
+        Sun'iy intellektni noldan boshlash bo'yicha bosqichma-bosqich qo'llanma va bepul "AI Asoslari" kursi rasmiy Telegram botimizda taqdim etilgan.
+      </p>
+      <a href="https://t.me/GPTify_uz_bot?start=prompt_ustaxonasi" target="_blank" rel="noopener noreferrer" class="pdf-promo-btn">
+        <span>🤖</span> <span>Telegramda Bepul Olish →</span>
+      </a>
+    </aside>
+
+  </div><!-- /app-container -->
+
+  <!-- Toast Notification -->
+  <div class="tma-toast" id="tmaToast">
+    <span>✓</span> <span id="tmaToastText">Prompt nusxalandi!</span>
+  </div>
+
+  <!-- App Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
