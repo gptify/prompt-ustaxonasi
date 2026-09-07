@@ -970,60 +970,1104 @@ function shareTemplateToTelegram() {
 // =============================================================================
 const CURATED_LIBRARY_PROMPTS = [
   {
-    id: "lib_1",
-    category: "biznes",
-    title: "B2B Mijozga Tijorat Taklifi (KP)",
-    tags: ["B2B", "Savdo", "KP"],
-    prompt: "Sen O'zbekistondagi eng tajribali B2B savdo maslahatchisisan. Yangi korporativ mijoz uchun rad etib bo'lmas individual tijorat taklifi (KP) ssenariysini tuz. Unda: 1) Mijoz kompaniyasining bugungi muammolarini hal qilish; 2) Xarajat emas, 3 oy ichida o'zini oqlovchi investitsiya ekanligini raqamlar bilan asoslash; 3) Keyingi qadam (uchrashuv yoki demo) bo'yicha aniq harakatga chaqiruv bo'lsin."
+    "id": "smm_1",
+    "category": "smm",
+    "title": "Reels uchun 3 Soniyalik Virusli Ilgak (Hook)",
+    "tags": [
+      "Reels",
+      "Hook",
+      "SMM"
+    ],
+    "prompt": "Sen Instagram algoritmlarini chuqur biluvchi Reels rejissyori va kopiraytersan. [MAHSULOT/MAVZU] bo'yicha tomoshabin lentani surib yubormasligi uchun birinchi 3 soniyada diqqatni mixlab qo'yuvchi 5 ta kuchli provokatsion, kutilmagan va emotsional Hook (kirish sarlavhasi) yoz."
   },
   {
-    id: "lib_2",
-    category: "smm",
-    title: "AIDA/PAS Reklama Kopiraytingi",
-    tags: ["SMM", "Marketing", "AIDA"],
-    prompt: "Instagram va Telegram reklama kampaniyasi uchun yuqori konversiyali AIDA matnini yoz. Birinchi qatorda to'xtatuvchi kuchli sarlavha, o'rtada og'riqli nuqtalar va mahsulot afzalliklari, oxirida esa zudlik bilan harakat qilishga undovchi chaqiriq (CTA) bo'lsin."
+    "id": "smm_2",
+    "category": "smm",
+    "title": "AIDA Formulali Sotuvchi Caption (Post)",
+    "tags": [
+      "AIDA",
+      "Kopirayting",
+      "Savdo"
+    ],
+    "prompt": "AIDA (Attention, Interest, Desire, Action) formulasi asosida [MAHSULOT] sotuvi uchun Instagram va Telegram post matnini yoz. E'tiborni tortuvchi sarlavha, mijozning og'riqli nuqtasi, mahsulotning 3 ta asosiy foydasi va aniq Call-to-Action (CTA) bo'lsin."
   },
   {
-    id: "lib_3",
-    category: "visual",
-    title: "Mahsulot Uchun Studiya Fotosessiyasi",
-    tags: ["Midjourney", "Tasvir", "Dizayn"],
-    prompt: "/imagine prompt: Commercial studio product photography of a modern minimalist product, clean neutral background, soft diffused natural studio lighting, shot on 85mm lens, f/2.8, highly detailed textures, vibrant color grading, Unreal Engine 5 render style, 8k resolution, photorealistic, cinematic atmosphere --ar 16:9 --v 6.0 --style raw"
+    "id": "smm_3",
+    "category": "smm",
+    "title": "Ekspert Obro'sini Oshiruvchi Foydali Post",
+    "tags": [
+      "Ekspert",
+      "ShaxsiyBrend",
+      "Kontent"
+    ],
+    "prompt": "[SOHA/KASB] sohasida obunachilarning ishonchini qozonish va ekspert maqomini shakllantirish uchun 'Ko'pchilik bilmaydigan 3 ta nozik sir' mavzusida amaliy, faktlarga boy va oson tushuniladigan post matnini tuz."
   },
   {
-    id: "lib_4",
-    category: "visual",
-    title: "30 Sekundlik Reels/Shorts Rolik Ssenariysi",
-    tags: ["Kling", "Video", "Reels"],
-    prompt: "30 soniyalik dinamik Reels reklama videosi ssenariysi: 0-3 soniyadagi e'tibor tortuvchi vizual ilgak (Hook), kadrma-kadr kamera harakatlari tavsifi, audio matn va ekrandagi subtitrlar matnini to'liq jadval shaklida tuzib ber."
+    "id": "smm_4",
+    "category": "smm",
+    "title": "Instagram Karusel (Carousel) Slaydlar Matni",
+    "tags": [
+      "Karusel",
+      "Ta'lim",
+      "Instagram"
+    ],
+    "prompt": "Instagramda saqlab olishlar (saves) sonini 3 barobar oshiruvchi 7 ta slayddan iborat karusel posti matnini yoz. Har bir slayd uchun: 1) Slayd sarlavhasi; 2) Qisqa lo'nda 2-3 qatorlik foydali maslahat; 3) Slayd dizayni uchun vizual ko'rsatma."
   },
   {
-    id: "lib_5",
-    category: "biznes",
-    title: "Murakkab Excel / Google Sheets Formulalari",
-    tags: ["Excel", "Ofis", "Moliya"],
-    prompt: "Excelda ikkita alohida jadvaldan ma'lumotlarni qidirib, mos keluvchi qiymatlarni solishtiruvchi va farqlarni aniqlovchi murakkab XLOOKUP va INDEX/MATCH formulasini tuzib ber hamda har bir qismini o'zbek tilida tushuntir."
+    "id": "smm_5",
+    "category": "smm",
+    "title": "1 Haftalik To'liq SMM Kontent Rejasi",
+    "tags": [
+      "Plan",
+      "Reja",
+      "SMM"
+    ],
+    "prompt": "[BIZNES NOMI] uchun dushanbadan yakshanbagacha bo'lgan 7 kunlik kontent rejasini jadval shaklida tuz: Kun | Format (Reels/Post/Stories) | Post mavzusi | Maqsad (Jalb qilish/Sotuv/Ekspertiza) | Asosiy g'oya."
   },
   {
-    id: "lib_6",
-    category: "visual",
-    title: "Professional Diktor Ovozlashtirishi",
-    tags: ["ElevenLabs", "Ovoz", "Audio"],
-    prompt: "[Voice Style: Professional, warm, authoritative and engaging male/female voice with natural breathing pauses]\n\nVoiceover Script: \"Korporativ taqdimot videosi uchun ishonchli, samimiy va energiyaga to'la diktor ovozi prompti va audio ssenariysi.\""
+    "id": "smm_6",
+    "category": "smm",
+    "title": "Instagram Stories Interaktiv O'yinlar Ssenariysi",
+    "tags": [
+      "Stories",
+      "Interaktiv",
+      "Engajment"
+    ],
+    "prompt": "Obunachilarning Stories ko'rishlar sonini va qamrovini oshirish uchun bir kunda 5 ta ketma-ket joylanadigan interaktiv Stories ssenariysi yoz: So'rovnoma (Poll), Savol-javob oynasi, Viktorina va reaksiyalar stikeri bilan."
   },
   {
-    id: "lib_7",
-    category: "ecom",
-    title: "Uzum Market: 'Qimmat' E'tirozini Yopish",
-    tags: ["Uzum", "Savdo", "E'tiroz"],
-    prompt: "Uzum Market chatida mijoz 'Boshqa do'konlarda bu mahsulot arzonroq ekan, sizlarda nega qimmat?' deb so'radi. Mahsulotimizning haqiqiy original ekanligi, rasmiy kafolat, xavfsiz qadoq va tezkor bepul yetkazib berish afzalliklarini ko'rsatib, mijozni xaridga undovchi 2 ta xushmuomala javob varianti yoz."
+    "id": "smm_7",
+    "category": "smm",
+    "title": "Telegram Kanal Uchun Qiziqarli So'rovnoma & Munozara",
+    "tags": [
+      "Telegram",
+      "So'rovnoma",
+      "Post"
+    ],
+    "prompt": "Telegram kanalda obunachilarni faol muhokama qilishga undovchi so'rovnoma va unga kirish posti yoz. Mavzu: [MAVZU]. Post samimiy, munozarali va har kim o'z fikrini izohlarda qoldirishi oson bo'lsin."
   },
   {
-    id: "lib_8",
-    category: "it",
-    title: "Python / JavaScript Kod Tahlili & Xavfsizlik",
-    tags: ["IT", "Dasturlash", "Security"],
-    prompt: "Ushbu kod parchasi xavfsizlik va samaradorlik talablariga qay darajada javob berishini tahlil qil. Xususan SQL Injection, XSS, xotira sarfi va asinxron funksiyalardagi potensial xatoliklarni aniqlab, tuzatilgan to'liq kodni yoz."
+    "id": "smm_8",
+    "category": "smm",
+    "title": "Influencer / Bloggerga Hamkorlik Taklifi (DM)",
+    "tags": [
+      "Blogger",
+      "Hamkorlik",
+      "Outreach"
+    ],
+    "prompt": "Instagramda [AUDITORIYA] obunachilariga ega bloggerga brendimiz bilan hamkorlik qilish taklifi bo'yicha qisqa, diplomatik va qiziqtiruvchi Direct xabari yoz. Xatda: qadrlash, hamkorlik shartlari (barter yoki to'lov) va keyingi qadam bo'lsin."
+  },
+  {
+    "id": "smm_9",
+    "category": "smm",
+    "title": "Mijoz Keysi (Case Study): Muammo -> Natija",
+    "tags": [
+      "CaseStudy",
+      "Keys",
+      "Isbot"
+    ],
+    "prompt": "Mijozimiz [MIJOZ NOMI] erishgan yutuq haqida sotuvchi keys posti yoz: 1) Kelishdan oldingi qiyinchilik va og'riq; 2) Biz taklif qilgan aniq yechim; 3) Olingan aniq raqamli natija; 4) O'xshash muammosi borlar uchun harakatga chorlov."
+  },
+  {
+    "id": "smm_10",
+    "category": "smm",
+    "title": "Sotuv Haftaligi (Flash Sale) E'lon Posti",
+    "tags": [
+      "Aksiya",
+      "Chegirma",
+      "FOMO"
+    ],
+    "prompt": "Faqat 3 kun davom etadigan 30% lik maxsus taklif bo'yicha FOMO (imkoniyatni qo'ldan boy berish qo'rquvi) hissini uyg'otuvchi dinamik sotuv posti yoz. Shoshilinchlik (urgency) va zudlik bilan buyurtma berish usuli aniq ko'rsatilsin."
+  },
+  {
+    "id": "smm_11",
+    "category": "smm",
+    "title": "TikTok Uchun 15 Soniyalik Trend Format Ssenariysi",
+    "tags": [
+      "TikTok",
+      "Trend",
+      "Video"
+    ],
+    "prompt": "TikTok algoritmlarida tez trendga chiqadigan dinamik 15 soniyalik video ssenariysi tuz: 'Men buni bilishimdan oldin va keyin' formati. Kamera harakati, matnlar va ovozli audio moslashuvini jadval qilib ber."
+  },
+  {
+    "id": "smm_12",
+    "category": "smm",
+    "title": "Mijozlar Ko'p Beradigan Savollarga (FAQ) Post",
+    "tags": [
+      "FAQ",
+      "Savollar",
+      "Ishonch"
+    ],
+    "prompt": "[MAHSULOT/XIZMAT] bo'yicha mijozlar eng ko'p ikkilanadigan 5 ta savolga (masalan: yetkazib berish, kafolat, narx, to'lov) samimiy, ishonch uyg'otuvchi va e'tirozlarni yo'q qiluvchi javoblar posti tayyorla."
+  },
+  {
+    "id": "smm_13",
+    "category": "smm",
+    "title": "Shaxsiy Brend: 'Nega Aynan Shu Ishni Boshlaganman'",
+    "tags": [
+      "Storytelling",
+      "Brend",
+      "Samimiylik"
+    ],
+    "prompt": "Auditoriya bilan chuqur emotsional bog'lanish yaratuvchi samimiy hikoya (storytelling) posti yoz: Noldan boshlagan qiyinchiliklar, birinchi muvaffaqiyatsizlik va bugungi maqsadlar haqida ilhomlantiruvchi post."
+  },
+  {
+    "id": "smm_14",
+    "category": "smm",
+    "title": "Sohadagi Keng Tarqalgan 5 ta Afsona (Mif) Tahlili",
+    "tags": [
+      "Miflar",
+      "Faktlar",
+      "Ta'lim"
+    ],
+    "prompt": "[SOHA NOMI] haqida odamlar ishonadigan 5 ta noto'g'ri tushunchani (mifni) professional faktlar va amaliy misollar bilan inkor qiluvchi, tomoshabinni hayratda qoldiradigan post yoz."
+  },
+  {
+    "id": "smm_15",
+    "category": "smm",
+    "title": "Giveaway / Tanlov O'tkazishning Aniq Qoidalari",
+    "tags": [
+      "Giveaway",
+      "Konkurs",
+      "Obunachilar"
+    ],
+    "prompt": "Instagram sahifamiz uchun qonuniy, tushunarli va maksimal darajada yangi auditoriya jalb qiluvchi tanlov (giveaway) shartlari postini yoz. Qoidalar oddiy, shaffof va g'olibni aniqlash muddati aniq belgilansin."
+  },
+  {
+    "id": "smm_16",
+    "category": "smm",
+    "title": "Direct'da Mijozni Xaridga Yetaklovchi Skript",
+    "tags": [
+      "Direct",
+      "Skript",
+      "Savdo"
+    ],
+    "prompt": "Instagram Direct'ga 'Narxi qancha?' deb yozgan potensial mijozga darhol narxni aytib qochirib yubormasdan, uning ehtiyojini aniqlab, 3 ta xabarda xaridga undovchi do'stona savdo skripti yoz."
+  },
+  {
+    "id": "smm_17",
+    "category": "smm",
+    "title": "Podkast / Jonli Efir Uchun 10 ta Chuqur Savol",
+    "tags": [
+      "Podkast",
+      "Efir",
+      "Intervyu"
+    ],
+    "prompt": "[SOHA MUTAXASSISI] bilan o'tkaziladigan 45 daqiqalik jonli efir yoki podkast uchun standart bo'lmagan, tinglovchini zeriktirmaydigan va ekspertning eng qimmatli tajribalarini ochib beradigan 10 ta qiziq savol tuz."
+  },
+  {
+    "id": "smm_18",
+    "category": "smm",
+    "title": "Bepul Lead-Magnet (Qo'llanma) Tarqatish Posti",
+    "tags": [
+      "LeadMagnet",
+      "Obunachi",
+      "Bonus"
+    ],
+    "prompt": "Obunachilarga bepul 'Foydali PDF qo'llanma' ulashish orqali Direct'da yoki Telegram botda yangi lidlar to'plash uchun qiziqtiruvchi post yoz: 'Izohda [SOZ] deb qoldiring va avtomatik yuboramiz'."
+  },
+  {
+    "id": "smm_19",
+    "category": "smm",
+    "title": "Mahsulotni Qutidan Chiqarish (Unboxing) Ssenariysi",
+    "tags": [
+      "Unboxing",
+      "Reels",
+      "Vizual"
+    ],
+    "prompt": "[MAHSULOT] ning estetik, ASMR va qiziqarli unboxing (qutidan ochish) videosi uchun 20 soniyalik ssenariy tuz: Tovushlar, kadr yaqinlashuvlari, birinchi taassurot va mahsulotning nafis detallari."
+  },
+  {
+    "id": "smm_20",
+    "category": "smm",
+    "title": "Mavsumiy Ob-Havo / Bayramga Moslashgan Post",
+    "tags": [
+      "Bayram",
+      "Situatsion",
+      "SMM"
+    ],
+    "prompt": "O'zbekistondagi yaqinlashib kelayotgan [BAYRAM/FASL] munosabati bilan samimiy tabrik va shu bilan birga mahsulotimiz ushbu kunlarda qanday eng yaxshi sovg'a yoki yechim bo'lishini nozik bog'lovchi post yoz."
+  },
+  {
+    "id": "ecom_1",
+    "category": "ecom",
+    "title": "Uzum Market SEO Sarlavha & Kalit So'zlar",
+    "tags": [
+      "Uzum",
+      "SEO",
+      "Kartochka"
+    ],
+    "prompt": "Uzum Market qidiruv tizimida eng birinchi o'rinda chiqish uchun [MAHSULOT] nomiga eng ko'p qidiriladigan o'zbekcha va ruscha kalit so'zlardan iborat 90 belgilik SEO sarlavha va 15 ta search teglar tuz."
+  },
+  {
+    "id": "ecom_2",
+    "category": "ecom",
+    "title": "Uzum / WB Mahsulotning To'liq Sotuvchi Tavsifi",
+    "tags": [
+      "Uzum",
+      "WB",
+      "Tavsif"
+    ],
+    "prompt": "[MAHSULOT] kartochkasi uchun to'liq tavsif matni tayyorla: 1) Kicker (3 ta muhim fakt); 2) Nima uchun kerak va qanday muammoni yechadi; 3) Emojilar bilan boyitilgan texnik parametrlar; 4) Komplektatsiya; 5) Kimlar uchun ideal."
+  },
+  {
+    "id": "ecom_3",
+    "category": "ecom",
+    "title": "1 Yulduzli Salbiy Sharhga Professional Javob",
+    "tags": [
+      "Sharh",
+      "Mijoz",
+      "E'tiroz"
+    ],
+    "prompt": "Marketplace'da xaridor '[SALBIY FIKR]' deb 1 yulduz qoldirgan. Do'kon nomidan boshqa xaridorlar ko'zida do'kon obro'sini yanada oshiradigan, muammoni hal qilishga tayyor, o'ta xushmuomala javob yoz."
+  },
+  {
+    "id": "ecom_4",
+    "category": "ecom",
+    "title": "Ijobiy Sharh Qoldirgan Xaridorga Minnatdorchilik",
+    "tags": [
+      "Sharh",
+      "Loyallik",
+      "Savdo"
+    ],
+    "prompt": "5 yulduzli ajoyib sharh qoldirgan xaridorga samimiy minnatdorchilik bildirish va do'kondan keyingi xarid uchun do'stona taklif bilan yakunlanuvchi iliq javob matni yoz."
+  },
+  {
+    "id": "ecom_5",
+    "category": "ecom",
+    "title": "Wildberries 5 Slaydli Infografika Texnik Topshirig'i",
+    "tags": [
+      "Infografika",
+      "Dizayn",
+      "Wildberries"
+    ],
+    "prompt": "[MAHSULOT] uchun dizaynerga beriladigan 5 ta infografika slaydi matnlari: 1-slayd (Muqova triggeri), 2-slayd (Asosiy muammo va afzallik), 3-slayd (Ichki material/sifat), 4-slayd (O'lcham va qulaylik), 5-slayd (Kafolat va qadoq)."
+  },
+  {
+    "id": "ecom_6",
+    "category": "ecom",
+    "title": "'Boshqa Joyda Arzonroq' E'tirozini Yopish",
+    "tags": [
+      "Savdo",
+      "Narx",
+      "E'tiroz"
+    ],
+    "prompt": "Mijoz 'Ushbu tovar boshqa do'konda arzonroq ekan' deb yozganda, narxni tushirmasdan, mahsulotning original sifati, rasmiy kafolati, tezkor bepul yetkazilishi va xavfsiz qadog'i hisobiga mijozni ishontiruvchi javob skripti yoz."
+  },
+  {
+    "id": "ecom_7",
+    "category": "ecom",
+    "title": "Savatda Qolib Ketgan Mahsulot Eslatmasi (Push/SMS)",
+    "tags": [
+      "Savat",
+      "SMS",
+      "Konversiya"
+    ],
+    "prompt": "Saytda yoki botda mahsulotni savatga solib, lekin xaridni tugatmagan foydalanuvchiga yuboriladigan qisqa, do'stona va rad etib bo'lmas 10% chegirmali eslatma xabari tayyorla."
+  },
+  {
+    "id": "ecom_8",
+    "category": "ecom",
+    "title": "Qo'shimcha Mahsulot Sotish (Cross-Sell / Up-Sell)",
+    "tags": [
+      "Upsell",
+      "CrossSell",
+      "Chek"
+    ],
+    "prompt": "[ASOSIY MAHSULOT] sotib olayotgan mijozga o'rtacha chekni 30% ga oshirish uchun mos keluvchi aksessuar yoki qo'shimcha tovar taklif qilish skripti va do'stona xabari yoz."
+  },
+  {
+    "id": "ecom_9",
+    "category": "ecom",
+    "title": "Mijoz Uchun Aniq O'lcham Jadvali (Size Chart) Tavsifi",
+    "tags": [
+      "Kiyim",
+      "O'lcham",
+      "Qaytuv"
+    ],
+    "prompt": "Kiyim yoki poyabzal savdosida noto'g'ri o'lcham tufayli tovar qaytib kelishini (returns) kamaytirish uchun tushunarli, aniq o'lchash bo'yicha ko'rsatma va o'lchamlar jadvali matnini tuz."
+  },
+  {
+    "id": "ecom_10",
+    "category": "ecom",
+    "title": "Mahsulotni Qaytarish (Refund/Return) Xushmuomala Yo'riqnomasi",
+    "tags": [
+      "Qaytarish",
+      "Servis",
+      "Xushmuomala"
+    ],
+    "prompt": "Xaridor tovarni qaytarmoqchi bo'lganida nizo keltirib chiqarmasdan, qonuniy va xushmuomala tartibda qanday qaytarish yoki almashtirib olish mumkinligini tushuntiruvchi tinchlantiruvchi xabar yoz."
+  },
+  {
+    "id": "ecom_11",
+    "category": "ecom",
+    "title": "Yetkazib Berish Kechikkanida Mijozdan Uzr So'rash Xabari",
+    "tags": [
+      "Logistika",
+      "Kechikish",
+      "Uzr"
+    ],
+    "prompt": "Kuryerlik xizmati yoki ob-havo sababli tovar kechikkanida, mijoz g'azablanmasdan oldin unga yuboriladigan samimiy uzr so'rash va kichik kompensatsiya (bonus/kupon) taqdim etish xati yoz."
+  },
+  {
+    "id": "ecom_12",
+    "category": "ecom",
+    "title": "Kam Qolgan Tovar Bo'yicha Shoshilinch Xabar (Stock Alert)",
+    "tags": [
+      "Shoshilinch",
+      "Savdo",
+      "FOMO"
+    ],
+    "prompt": "'Omborda oxirgi 7 dona qoldi' mavzusida obunachilarni tezkor buyurtma berishga undovchi dinamik, emojilar bilan bezatilgan e'lon matni tuz."
+  },
+  {
+    "id": "ecom_13",
+    "category": "ecom",
+    "title": "Qalbaki (Poddelka) Tovarlardan Himoya Ko'rsatmasi",
+    "tags": [
+      "Original",
+      "Sifat",
+      "Ishonch"
+    ],
+    "prompt": "Bozorda ko'paygan arzon qalbaki nusxalardan xaridorni ogohlantiruvchi va original mahsulotimizni qanday ajratib olish mumkinligini ko'rsatuvchi 4 ta tekshirish nuqtasi haqida post matni yoz."
+  },
+  {
+    "id": "ecom_14",
+    "category": "ecom",
+    "title": "Katta Xarid Qilgan Doimiy Mijozga VIP Rahmat Xati",
+    "tags": [
+      "VIP",
+      "Loyallik",
+      "Mijoz"
+    ],
+    "prompt": "Do'konimizdan muntazam ravishda xarid qilayotgan doimiy mijozga uning qadrli ekanligini his qildiruvchi shaxsiy minnatdorchilik xati va unga biriktirilgan doimiy VIP chegirma e'loni yoz."
+  },
+  {
+    "id": "ecom_15",
+    "category": "ecom",
+    "title": "To'plam (Bundle) Sifatida Sotish Taklifi",
+    "tags": [
+      "To'plam",
+      "Set",
+      "Aksiya"
+    ],
+    "prompt": "Ikkita yoki uchta bog'liq mahsulotni bitta to'plam (set) qilib, alohida sotib olgandan ko'ra 20% arzonroq narxda taqdim etuvchi kuchli sotuv taklifi matnini yoz."
+  },
+  {
+    "id": "ecom_16",
+    "category": "ecom",
+    "title": "Yangi Tovar Kelishi (Premyera) Anons Posti",
+    "tags": [
+      "Premyera",
+      "Yangi",
+      "Kutilayotgan"
+    ],
+    "prompt": "Tez kunda sotuvga chiqadigan yangi eksklyuziv mahsulot uchun kutish hissini (hype) uyg'otuvchi, 'Birinchilardan bo'lib bron qiling' chaqirig'iga ega premyera posti tayyorla."
+  },
+  {
+    "id": "ecom_17",
+    "category": "ecom",
+    "title": "Mavsumiy Ombor Tozalash Savdosi (Clearance Sale)",
+    "tags": [
+      "Sale",
+      "Likvidatsiya",
+      "Arzon"
+    ],
+    "prompt": "Mavsum tugashi munosabati bilan ombordagi qolgan tovarlarni eng arzon ulgurji narxlarda tugatish (likvidatsiya) e'loni matnini yoz."
+  },
+  {
+    "id": "ecom_18",
+    "category": "ecom",
+    "title": "Fotoli Sharh Qoldirgan Xaridorga Sovg'a E'loni",
+    "tags": [
+      "Review",
+      "Sovg'a",
+      "Rasm"
+    ],
+    "prompt": "Xaridorlarni marketplace kartochkasiga fotoli yoki videoli samimiy sharh qoldirishga rag'batlantiruvchi va evaziga keyingi xaridga 20,000 so'm bonus beruvchi taklif matnini tuz."
+  },
+  {
+    "id": "ecom_19",
+    "category": "ecom",
+    "title": "Rasmiy Kafolat Shartlari va Servis Ko'rsatmasi",
+    "tags": [
+      "Kafolat",
+      "Servis",
+      "Xavfsizlik"
+    ],
+    "prompt": "Elektronika yoki texnika xaridori uchun 1 yillik rasmiy kafolat qanday ishlashi, nosozlik bo'lsa qayerga murojaat qilish kerakligini aniq va xotirjamlik bag'ishlovchi ohangda tushuntir."
+  },
+  {
+    "id": "ecom_20",
+    "category": "ecom",
+    "title": "Do'kon Chat Boti Uchun 5 ta Tezkor Javob (Quick Reply)",
+    "tags": [
+      "Chatbot",
+      "Tezkor",
+      "Mijoz"
+    ],
+    "prompt": "Mijoz xabar yozganda operator kutdirmasligi uchun 5 ta eng ko'p beriladigan savolga tayyor avtomatik shablon matnlari yoz: Salomlashish, To'lov turlari, Yetkazish muddati, Joylashuv, Konsultatsiya."
+  },
+  {
+    "id": "biz_1",
+    "category": "biznes",
+    "title": "B2B Rad Etib Bo'lmas Tijorat Taklifi (KP)",
+    "tags": [
+      "B2B",
+      "KP",
+      "Tijorat"
+    ],
+    "prompt": "Korporativ mijoz [KOMPANIYA NOMI] uchun individual tijorat taklifi (KP) ssenariysini tuz. Taklifda mijozning vaqti va xarajatini kamaytirish, 3 oylik kutilayotgan ROI (daromadlilik) hisobi va demo uchrashuvga chaqiruv bo'lsin."
+  },
+  {
+    "id": "biz_2",
+    "category": "biznes",
+    "title": "Didox Shartnoma Bandlarini Huquqiy Tekshirish",
+    "tags": [
+      "Shartnoma",
+      "Didox",
+      "Yurist"
+    ],
+    "prompt": "O'zbekiston Respublikasi Fuqarolik kodeksi va amaldagi qonunchilik talablari asosida ushbu shartnoma loyihasini xatarlar (risks), noaniq jarimalar va bir tomonlama majburiyatlar bo'yicha tahlil qil va tuzatishlar tavsiya et."
+  },
+  {
+    "id": "biz_3",
+    "category": "biznes",
+    "title": "Hamkor Tashkilot Rahbariga Rasmiy Xat",
+    "tags": [
+      "Xat",
+      "Diplomatiya",
+      "Protokol"
+    ],
+    "prompt": "O'zbekiston ish yuritish va davlat tili qoidalariga muvofiq, vazirlik yoki yirik kompaniya rahbari nomiga strategik hamkorlik o'rnatish to'g'risida diplomatik, ehtiromli va aniq maqsadli rasmiy xat matnini tuz."
+  },
+  {
+    "id": "biz_4",
+    "category": "biznes",
+    "title": "Xarajatlarni 15% ga Qisqartirish Rejasi",
+    "tags": [
+      "Moliya",
+      "Xarajat",
+      "Optimizatsiya"
+    ],
+    "prompt": "Kichik va o'rta biznes korxonasida ishlab chiqarish sifatiga ta'sir qilmagan holda operatsion xarajatlarni (OPEX) 15% ga optimallashtirish bo'yicha 5 ta amaliy yo'nalish va chora-tadbirlar rejasini tuzib ber."
+  },
+  {
+    "id": "biz_5",
+    "category": "biznes",
+    "title": "Xodimlar Uchun Aniq KPI va Motivatsiya Tizimi",
+    "tags": [
+      "KPI",
+      "HR",
+      "Boshqaruv"
+    ],
+    "prompt": "[LAVOZIM NOMI] lavozimi uchun oylik shaffof KPI ko'rsatkichlari tizimini ishlab chiq: 3 ta o'lchanadigan miqdoriy ko'rsatkich, 2 ta sifat ko'rsatkichi, bonus hisoblash formulasi va bajarilmagan holdagi qoidalar."
+  },
+  {
+    "id": "biz_6",
+    "category": "biznes",
+    "title": "Boshqaruv Uchun 1 Sahifalik Haftalik Hisobot",
+    "tags": [
+      "Hisobot",
+      "Dashboard",
+      "Rahbar"
+    ],
+    "prompt": "Kompaniya bosh direktori (CEO) uchun 1 sahifalik haftalik hisobot (Executive Summary) formatini tayyorla: Daromad/Xarajat, yangi mijozlar soni, hal qilingan asosiy vazifalar va kelgusi haftaning 3 ta bosh fokusi."
+  },
+  {
+    "id": "biz_7",
+    "category": "biznes",
+    "title": "Qarzdorlikni Undirish Bo'yicha Ogohlantirish Xati (Pretenziya)",
+    "tags": [
+      "Qarzdorlik",
+      "Pretenziya",
+      "Moliya"
+    ],
+    "prompt": "To'lov muddatini 30 kundan ortiq kechiktirgan kontragentga sudgacha bo'lgan rasmiy talabnoma (pretenziya) xatini tuz. Diplomatik, ammo qat'iy huquqiy oqibatlar va jarimalar ko'rsatilgan bo'lsin."
+  },
+  {
+    "id": "biz_8",
+    "category": "biznes",
+    "title": "Yangi Xodimni Ishga Olish Suhbati (Interview) Savollari",
+    "tags": [
+      "HR",
+      "Interview",
+      "Suhbat"
+    ],
+    "prompt": "[LAVOZIM] bo'yicha nomzodning nafaqat kasbiy bilimlarini (Hard skills), balki jamoada ishlash, mas'uliyat va stressga chidamliligini (Soft skills) aniqlash uchun 8 ta chuqur keys savollarini tuz."
+  },
+  {
+    "id": "biz_9",
+    "category": "biznes",
+    "title": "Standart Ish Yuritish Yo'riqnomasi (SOP - Reglamet)",
+    "tags": [
+      "SOP",
+      "Reglament",
+      "Tizim"
+    ],
+    "prompt": "[JARAYON NOMI] jarayoni uchun har qanday yangi xodim darhol tushunib, xatosiz bajara oladigan bosqichma-bosqich Standart Operatsion Tartib (SOP) yo'riqnomasini jadval qilib yoz."
+  },
+  {
+    "id": "biz_10",
+    "category": "biznes",
+    "title": "Investorlar Uchun 1 Daqiqalik Elevator Pitch",
+    "tags": [
+      "Pitch",
+      "Startap",
+      "Investitsiya"
+    ],
+    "prompt": "Biznes g'oyamizni investorga 60 soniyada taqdim etuvchi Elevator Pitch matnini yoz: Muammo nima, bizning unikal yechim, bozor hajmi, bugungi traksiyamiz va so'ralayotgan investitsiya miqdori."
+  },
+  {
+    "id": "biz_11",
+    "category": "biznes",
+    "title": "SWOT Tahlili va Xavflarni Boshqarish (Risk Matrix)",
+    "tags": [
+      "SWOT",
+      "Strategiya",
+      "Xavflar"
+    ],
+    "prompt": "[BIZNES SOHASI] bo'yicha O'zbekiston bozoridagi Kuchli (Strengths), Zaif (Weaknesses) tomonlar, Imkoniyatlar (Opportunities) va Xatarlar (Threats) bo'yicha to'liq SWOT matritsasi va xavflarni yumshatish rejasini tuz."
+  },
+  {
+    "id": "biz_12",
+    "category": "biznes",
+    "title": "Murakkab Excel XLOOKUP / INDEX-MATCH Formulalari",
+    "tags": [
+      "Excel",
+      "Formula",
+      "Moliya"
+    ],
+    "prompt": "Excelda 2 ta turli varaqdagi (sheets) ma'lumotlarni solishtirib, umumiy identifikator (ID) bo'yicha mos keluvchi qiymatlarni topib, xato chiqmasligi uchun IFERROR bilan himoyalangan murakkab formulani tuz va o'zbekcha izohla."
+  },
+  {
+    "id": "biz_13",
+    "category": "biznes",
+    "title": "Yangi Mahsulotni Bozorga Chiqarish (Go-To-Market)",
+    "tags": [
+      "GTM",
+      "Marketing",
+      "Strategiya"
+    ],
+    "prompt": "[YANGI MAHSULOT] ni O'zbekiston bozoriga 30 kun ichida muvaffaqiyatli chiqarish (Go-To-Market) bo'yicha bosqichma-bosqich marketing va savdo yo'l xaritasini tuz."
+  },
+  {
+    "id": "biz_14",
+    "category": "biznes",
+    "title": "To'lov Muddatini Uzaytirishni So'rash Xati",
+    "tags": [
+      "To'lov",
+      "Muzokara",
+      "Hamkorlik"
+    ],
+    "prompt": "Yetkazib beruvchi hamkorimizga vaqtinchalik aylanma mablag'lar yetishmovchiligi sababli to'lov muddatini 15 kunga uzaytirishni iltimos qiluvchi, o'zaro ishonchni saqlab qoluvchi professional xat yoz."
+  },
+  {
+    "id": "biz_15",
+    "category": "biznes",
+    "title": "Mijozlar Ketib Qolishini (Churn Rate) Kamaytirish Rejasi",
+    "tags": [
+      "Loyallik",
+      "Mijoz",
+      "Churn"
+    ],
+    "prompt": "Xizmatimizdan foydalanishni to'xtatayotgan mijozlarni aniqlash, ularning sabablarini tahlil qilish va ularni qaytarish (retention) bo'yicha 4 bosqichli amaliy tizim ishlab chiq."
+  },
+  {
+    "id": "biz_16",
+    "category": "biznes",
+    "title": "Kompaniya Bo'limlari O'rtasidagi RACI Matritsasi",
+    "tags": [
+      "RACI",
+      "Boshqaruv",
+      "Loyiha"
+    ],
+    "prompt": "[LOYIHA NOMI] loyihasini amalga oshirishda kim javobgar (Responsible), kim hisob beruvchi (Accountable), kim maslahatchi (Consulted) va kim xabardor (Informed) ekanligini belgilovchi RACI jadvalini tuz."
+  },
+  {
+    "id": "biz_17",
+    "category": "biznes",
+    "title": "Muzokara va Uchrashuv Bayonnomasi (Meeting Minutes)",
+    "tags": [
+      "Protokol",
+      "Uchrashuv",
+      "Boshqaruv"
+    ],
+    "prompt": "Ikki kompaniya rahbarlari o'rtasida bo'lib o'tgan strategik uchrashuv natijalari bo'yicha qat'iy bayonnoma (Minutes of Meeting) shaklini tayyorla: Ko'rilgan masalalar, qabul qilingan qarorlar va mas'ullar."
+  },
+  {
+    "id": "biz_18",
+    "category": "biznes",
+    "title": "Yillik Korxona Byudjeti Taqsimoti Modeli",
+    "tags": [
+      "Byudjet",
+      "Moliya",
+      "Reja"
+    ],
+    "prompt": "Yillik kutilayotgan daromadning 100% qismini Marketing, Ish haqi, R&D, Operatsion xarajatlar va Favqulodda zaxiraga foizlarda optimal taqsimlash modelini asoslab ber."
+  },
+  {
+    "id": "biz_19",
+    "category": "biznes",
+    "title": "Kompaniya Axborot Xavfsizligi va NDA Yo'riqnomasi",
+    "tags": [
+      "NDA",
+      "Xavfsizlik",
+      "Yurist"
+    ],
+    "prompt": "Xodimlarning tijorat sirlarini, mijozlar bazasini va intellektual mulkni tashqariga chiqarmasligi uchun ichki korporativ xavfsizlik va NDA talablari to'g'risida eslatma hujjati tuz."
+  },
+  {
+    "id": "biz_20",
+    "category": "biznes",
+    "title": "Mijozdan Mahsulot Narxini Oshirish Haqida Xat",
+    "tags": [
+      "Narx",
+      "Xat",
+      "Muzokara"
+    ],
+    "prompt": "Xomashyo va logistika qimmatlashgani sababli mavjud mijozlarimizga xizmat narxi 10% ga oshishini norozilik keltirib chiqarmasdan, sifatni saqlash nuqtai nazaridan asoslab beruvchi xat matnini yoz."
+  },
+  {
+    "id": "it_1",
+    "category": "it",
+    "title": "Python / JS Kodini Xavfsizlik Auditi (Security Check)",
+    "tags": [
+      "Security",
+      "Audit",
+      "Kod"
+    ],
+    "prompt": "Ushbu kod parchasini xavfsizlik bo'yicha tahlil qil: SQL Injection, XSS, CSRF zaifliklari, ochiq qolgan API kalitlar va asinxron xotira sarfini tekshirib, xavfsiz holatga keltirilgan kodni yoz."
+  },
+  {
+    "id": "it_2",
+    "category": "it",
+    "title": "React Komponentini Refaktoring va Tezlashtirish",
+    "tags": [
+      "React",
+      "Refactor",
+      "Frontend"
+    ],
+    "prompt": "Ushbu React komponentini tahlil qilib, ortiqcha re-renderlarni bartaraf etish (useMemo, useCallback), Clean Code va SOLID prinsiplariga moslab, toza va optimal holatga keltirib ber."
+  },
+  {
+    "id": "it_3",
+    "category": "it",
+    "title": "Murakkab SQL So'rovi: JOIN, GROUP BY & Oyna Funksiyalari",
+    "tags": [
+      "SQL",
+      "Database",
+      "Backend"
+    ],
+    "prompt": "PostgreSQL bazasida 3 ta jadvaldan mijozlarning oylik xaridlari yig'indisi, ularning o'rtacha cheki va har bir toifadagi o'rnini (RANK/DENSE_RANK) hisoblovchi optimal SQL so'rovini yoz va indekslar bo'yicha maslahat ber."
+  },
+  {
+    "id": "it_4",
+    "category": "it",
+    "title": "REST API Endpoint Arxitekturasi va Swagger Hujjati",
+    "tags": [
+      "API",
+      "REST",
+      "Swagger"
+    ],
+    "prompt": "[TIZIM NOMI] uchun mukammal RESTful API arxitekturasini loyihalashtir: URL tuzilishi, HTTP metodlar, Status kodlar, Request/Response JSON namunalari va xatoliklar qaytarish standarti."
+  },
+  {
+    "id": "it_5",
+    "category": "it",
+    "title": "Error Stack Trace Tahlili va Aniq Bug Fix",
+    "tags": [
+      "BugFix",
+      "Debug",
+      "Xato"
+    ],
+    "prompt": "Ushbu server xatoligi logini (Stack Trace) tahlil qil: Xatoning tub sababi (Root cause) nima, qaysi qatorda yuz bergan va uni darhol tuzatuvchi to'liq kod blokini ko'rsat."
+  },
+  {
+    "id": "it_6",
+    "category": "it",
+    "title": "Production Uchun Dockerfile va Docker Compose",
+    "tags": [
+      "Docker",
+      "DevOps",
+      "Deploy"
+    ],
+    "prompt": "[TEXNOLOGIYA, masalan: Node.js + PostgreSQL + Redis] uchun minimal o'lchamli (Multi-stage build), xavfsiz va tez yuklanuvchi production-ready Dockerfile va docker-compose.yml faylini yoz."
+  },
+  {
+    "id": "it_7",
+    "category": "it",
+    "title": "Git Merge Konflikti va To'g'ri Rebase Yo'riqnomasi",
+    "tags": [
+      "Git",
+      "GitHub",
+      "VCS"
+    ],
+    "prompt": "Git'da ikkita branch to'qnashganda (merge conflict) kodni yo'qotmasdan, toza tarix bilan 'git rebase' qilish va konfliktlarni bosqichma-bosqich hal qilish bo'yicha terminal buyruqlarini tushuntir."
+  },
+  {
+    "id": "it_8",
+    "category": "it",
+    "title": "Unit va Integratsion Testlar Yozish (Jest / PyTest)",
+    "tags": [
+      "Testing",
+      "Jest",
+      "PyTest"
+    ],
+    "prompt": "Ushbu funksiya uchun 100% test coverage ta'minlovchi unit testlar yoz: Ijobiy holat (Happy path), noto'g'ri kiritilgan ma'lumotlar (Edge cases) va xatolik tashlash holatlarini qamrab olsin."
+  },
+  {
+    "id": "it_9",
+    "category": "it",
+    "title": "Sekin Ishlayotgan Ma'lumotlar Bazasini Tezlashtirish",
+    "tags": [
+      "Database",
+      "Index",
+      "Performance"
+    ],
+    "prompt": "10 million satrli jadvalda qidiruv sekinlashganida indekslar (B-Tree, GIN), EXPLAIN ANALYZE tahlili va so'rovni 10 barobar tezlashtirish bo'yicha amaliy qo'llanma va SQL tuz."
+  },
+  {
+    "id": "it_10",
+    "category": "it",
+    "title": "Murakkab Regular Expression (Regex) Yaratish",
+    "tags": [
+      "Regex",
+      "Validation",
+      "Dasturlash"
+    ],
+    "prompt": "O'zbekiston telefon raqamlari (+998...), pasport seriyalari va murakkab parol talablariga javob beruvchi Regex ifodasini tuz va uning har bir belgisi nima qilishini tushuntirib ber."
+  },
+  {
+    "id": "it_11",
+    "category": "it",
+    "title": "JWT Token Autentifikatsiyasi va Refresh Token Sxemasi",
+    "tags": [
+      "JWT",
+      "Auth",
+      "Security"
+    ],
+    "prompt": "Web va mobil ilovalar uchun xavfsiz Access Token (15 daqiqa) va Refresh Token (30 kun, HttpOnly cookie) mexanizmining to'liq ishlash arxitekturasi va kod shablonini yoz."
+  },
+  {
+    "id": "it_12",
+    "category": "it",
+    "title": "Clean Code & SOLID Prinsiplari Bo'yicha Code Review",
+    "tags": [
+      "CleanCode",
+      "SOLID",
+      "Review"
+    ],
+    "prompt": "Ushbu kod parchasi bo'yicha professional Senior dasturchi sifatida Code Review o'tkaz: Kodni o'qilishi, nomlash standartlari, ortiqcha bog'liqliklar va yaxshilash kerak bo'lgan 3 ta asosiy joy."
+  },
+  {
+    "id": "it_13",
+    "category": "it",
+    "title": "Linux Bash Skripti Bilan Avtomatik DB Backup",
+    "tags": [
+      "Linux",
+      "Bash",
+      "Backup"
+    ],
+    "prompt": "Har kuni tunda PostgreSQL bazasini dump qilib, arxivlab, eski 7 kundan ortiq zaxira nusxalarini avtomatik o'chiruvchi va jarayon natijasini Telegram botga yuboruvchi to'liq Bash skript yoz."
+  },
+  {
+    "id": "it_14",
+    "category": "it",
+    "title": "Microservices Xabarlar Navbati (RabbitMQ / Kafka)",
+    "tags": [
+      "Microservices",
+      "Kafka",
+      "RabbitMQ"
+    ],
+    "prompt": "Buyurtma berilganda to'lov, ombor va bildirishnoma xizmatlarini uzluksiz bog'lovchi asinxron xabarlar navbati (Event-Driven Architecture) modelini loyihalashtir."
+  },
+  {
+    "id": "it_15",
+    "category": "it",
+    "title": "Webhook Qabul Qilish va Xavfsiz Qayta Ishlash",
+    "tags": [
+      "Webhook",
+      "Backend",
+      "Payment"
+    ],
+    "prompt": "To'lov tizimidan (masalan: Payme, Click yoki Stripe) keladigan Webhook so'rovini qabul qiluvchi, uning imzosini (Signature) tekshiruvchi va takroriy so'rovlardan (Idempotency) himoyalangan kod yoz."
+  },
+  {
+    "id": "it_16",
+    "category": "it",
+    "title": "CSS Flexbox & Grid Bilan Moslashuvchan (Responsive) Maket",
+    "tags": [
+      "CSS",
+      "Frontend",
+      "Responsive"
+    ],
+    "prompt": "Mobil telefonlardan tortib keng ekranli monitorlargacha mukammal moslashuvchi (responsive) 3 ustunli Dashboard kartochkalari uchun zamonaviy CSS Grid va Flexbox kodini yoz."
+  },
+  {
+    "id": "it_17",
+    "category": "it",
+    "title": "Frontend State Management (Zustand / Redux Toolkit)",
+    "tags": [
+      "Zustand",
+      "Redux",
+      "Frontend"
+    ],
+    "prompt": "Foydalanuvchi savatchasi (Cart) ma'lumotlarini saqlovchi, localStorage bilan sinxronlashuvchi va tovar qo'shish/o'chirish/sonini o'zgartirish funksiyalariga ega toza Zustand store kodini yoz."
+  },
+  {
+    "id": "it_18",
+    "category": "it",
+    "title": "API Rate Limiting va DoS Hujumlaridan Himoya",
+    "tags": [
+      "Security",
+      "DDoS",
+      "RateLimit"
+    ],
+    "prompt": "Serverga daqiqasiga 100 tadan ortiq so'rov yuborgan IP manzillarni vaqtinchalik cheklovchi Redis asosidagi Token Bucket yoki Sliding Window Rate Limiting middleware kodini yoz."
+  },
+  {
+    "id": "it_19",
+    "category": "it",
+    "title": "Python Pandas Bilan Katta CSV Ma'lumotlarni Tahlil Qilish",
+    "tags": [
+      "Python",
+      "Pandas",
+      "Data"
+    ],
+    "prompt": "100,000 qatorli sotuvlar CSV faylini ochib, bo'sh qiymatlarni tozalovchi, eng ko'p daromad keltirgan top 10 ta mahsulot va oylik dinamikani hisoblovchi Python Pandas skriptini yoz."
+  },
+  {
+    "id": "it_20",
+    "category": "it",
+    "title": "GitHub Actions Bilan To'liq CI/CD Avtomatlashtirish",
+    "tags": [
+      "CICD",
+      "DevOps",
+      "GitHubActions"
+    ],
+    "prompt": "Har safar 'main' branchga push bo'lganda avtomatik testlarni ishga tushiruvchi, loyihani build qiluvchi va SSH orqali Linux serverga yangi versiyani uzluksiz (Zero-Downtime) yuklovchi .github/workflows YAML faylini yoz."
+  },
+  {
+    "id": "vis_1",
+    "category": "visual",
+    "title": "Tijorat Mahsulot Studiya Fotosessiyasi (Midjourney 8K)",
+    "tags": [
+      "Midjourney",
+      "Mahsulot",
+      "Studiya"
+    ],
+    "prompt": "/imagine prompt: Commercial studio product photography of a luxury perfume glass bottle, resting on minimal polished black basalt stone, soft natural water droplets, dramatic cinematic studio rim lighting, 85mm lens, f/2.8, hyper-detailed glass textures, 8k resolution, photorealistic --ar 16:9 --v 6.0 --style raw"
+  },
+  {
+    "id": "vis_2",
+    "category": "visual",
+    "title": "Zamonaviy Minimalist Ofis Interyeri (ArchViz)",
+    "tags": [
+      "Interyer",
+      "Ofis",
+      "Dizayn"
+    ],
+    "prompt": "/imagine prompt: Ultra-modern luxury tech startup office interior in Tashkent, floor-to-ceiling panoramic glass windows, indoor green living plant wall, minimalist ergonomic wooden desks, warm afternoon sun rays, clean architectural visualization, 8k render --ar 16:9 --v 6.0"
+  },
+  {
+    "id": "vis_3",
+    "category": "visual",
+    "title": "Futuristik Elektromobil Dron Kadri (Kling / Runway)",
+    "tags": [
+      "Kling",
+      "Video",
+      "Avto"
+    ],
+    "prompt": "Cinematic video generation prompt:\nScene: Sleek black electric supercar driving smoothly on illuminated Tashkent City highway at rainy dusk.\nCamera: Smooth dynamic low-angle drone orbit following the vehicle with anamorphic lens flare.\nLighting: Neon cyberpunk street reflections, 4k 60fps photorealistic motion blur."
+  },
+  {
+    "id": "vis_4",
+    "category": "visual",
+    "title": "Korporativ Ovozlashtirish Ssenariysi (ElevenLabs)",
+    "tags": [
+      "ElevenLabs",
+      "Ovoz",
+      "Audio"
+    ],
+    "prompt": "[Voice Style: Warm, confident, professional and authoritative male narrator with native Uzbek accent and natural pauses]\nVoiceover Script: \"Kelajak texnologiyalari bugun sizning qo'lingizda. Biz biznesingizni sun'iy intellekt yordamida yangi bosqichga olib chiqamiz.\""
+  },
+  {
+    "id": "vis_5",
+    "category": "visual",
+    "title": "3D Izometrik Ilova Illyustratsiyasi (Isometric App)",
+    "tags": [
+      "3D",
+      "Izometriya",
+      "Ilova"
+    ],
+    "prompt": "/imagine prompt: Vibrant 3D isometric illustration of a modern mobile banking and AI financial app floating in digital space, glowing charts, holographic coin icons, clean smooth plastic materials, blender 3D style, pastel neon lighting on dark navy background --ar 1:1 --v 6.0"
+  },
+  {
+    "id": "vis_6",
+    "category": "visual",
+    "title": "Nafis Zargarlik Buyumlari Makro Fotosurati (Macro Jewelry)",
+    "tags": [
+      "Zargarlik",
+      "Makro",
+      "Tilla"
+    ],
+    "prompt": "/imagine prompt: Extreme macro photography of a luxury 18k gold diamond ring with intricate engravings, set on raw dark silk fabric, sparkling diamond light dispersion, 100mm macro lens, ultra-sharp focus, editorial Vogue jewelry catalog aesthetic --ar 1:1 --v 6.0 --style raw"
+  },
+  {
+    "id": "vis_7",
+    "category": "visual",
+    "title": "Kiberpank Neon Uslubidagi Tungi Shahar",
+    "tags": [
+      "Kiberpank",
+      "Neon",
+      "Shahar"
+    ],
+    "prompt": "/imagine prompt: Atmospheric cinematic cyberpunk night city scene, glowing emerald and cyan holographic billboards, bustling futuristic bazaar, wet reflective pavement, volumetric fog, Unreal Engine 5 movie still --ar 16:9 --v 6.0"
+  },
+  {
+    "id": "vis_8",
+    "category": "visual",
+    "title": "Qahvaxona / Restoran Brending Maketi (Branding Mockup)",
+    "tags": [
+      "Mockup",
+      "Brending",
+      "Kafe"
+    ],
+    "prompt": "/imagine prompt: High-end coffee shop branding mockup set on a marble counter: Kraft paper coffee bag with embossed gold logo, reusable ceramic takeaway cup, kraft business card, soft morning sunlight, top-down flatlay composition, 8k --ar 16:9 --v 6.0"
+  },
+  {
+    "id": "vis_9",
+    "category": "visual",
+    "title": "3D Pixar / Disney Animatsiya Uslubidagi Qahramon",
+    "tags": [
+      "Pixar",
+      "3D",
+      "Qahramon"
+    ],
+    "prompt": "/imagine prompt: Adorable 3D animated character of an energetic young Uzbek software developer with glasses and modern national skullcap (do'ppi), holding a glowing AI laptop, Pixar Animation Studios character design style, subsurface scattering, vibrant lighting --ar 1:1 --v 6.0"
+  },
+  {
+    "id": "vis_10",
+    "category": "visual",
+    "title": "LinkedIn Uchun Professional Biznes Portret",
+    "tags": [
+      "Portret",
+      "LinkedIn",
+      "Biznes"
+    ],
+    "prompt": "/imagine prompt: Professional corporate headshot photography of a confident modern business entrepreneur, wearing tailored charcoal blazer, soft neutral studio backdrop, Rembrandt lighting, 85mm portrait lens, natural skin texture, Forbes magazine cover aesthetic --ar 1:1 --v 6.0 --style raw"
+  },
+  {
+    "id": "vis_11",
+    "category": "visual",
+    "title": "Instagram Stories Harakatlanuvchi 3D Abstrakt Fon",
+    "tags": [
+      "Stories",
+      "Abstrakt",
+      "Fon"
+    ],
+    "prompt": "/imagine prompt: Abstract dynamic 3D fluid art background for mobile story, floating silky emerald ribbons and glass spheres, iridescent pastel gradients, depth of field, elegant minimalist tech luxury, 9:16 vertical ratio --ar 9:16 --v 6.0"
+  },
+  {
+    "id": "vis_12",
+    "category": "visual",
+    "title": "E-Tijorat Kiyimlar Moda Fotosessiyasi (Fashion Editorial)",
+    "tags": [
+      "Moda",
+      "Kiyim",
+      "E-tijorat"
+    ],
+    "prompt": "/imagine prompt: High-fashion editorial photography of a model wearing modern minimalist streetwear oversized hoodie, posing in brutalist concrete architectural space, harsh artistic sunlight and geometric shadows, shot on Kodak Portra 400 --ar 3:4 --v 6.0"
+  },
+  {
+    "id": "vis_13",
+    "category": "visual",
+    "title": "Dinamik Sport Krossovkasi Havoda Muallaq Turishi",
+    "tags": [
+      "Krossovka",
+      "Sport",
+      "Reklama"
+    ],
+    "prompt": "/imagine prompt: High-speed dynamic advertising shot of a futuristic athletic running sneaker exploding into geometric energy particles in mid-air, dark studio background with cyan rim light, floating neon dust, ultra-sharp details, Nike commercial aesthetic --ar 16:9 --v 6.0"
+  },
+  {
+    "id": "vis_14",
+    "category": "visual",
+    "title": "Minimalistik 3D Geometrik Logotip Dizayni",
+    "tags": [
+      "Logotip",
+      "Minimalizm",
+      "Vektor"
+    ],
+    "prompt": "/imagine prompt: Clean minimalist 3D geometric logo emblem representing Artificial Intelligence and Growth, stylized letter 'G' merging into an upward growth arrow, metallic matte emerald and lime green, isolated on pure dark background, vector precision --ar 1:1 --v 6.0"
+  },
+  {
+    "id": "vis_15",
+    "category": "visual",
+    "title": "Qadimiy Samarqand va Kelajak Uyg'unligi",
+    "tags": [
+      "Samarqand",
+      "Tarix",
+      "Kelajak"
+    ],
+    "prompt": "/imagine prompt: Breathtaking architectural fusion of ancient Registan Samarkand blue tile mosaics integrated with futuristic solar energy glass domes, sunset golden hour lighting, flying gentle aerial vehicles, hyper-detailed matte painting --ar 16:9 --v 6.0"
+  },
+  {
+    "id": "vis_16",
+    "category": "visual",
+    "title": "Tijorat Reklama Videosida Mahsulotning 360 Aylanmasi",
+    "tags": [
+      "Kling",
+      "Video",
+      "360"
+    ],
+    "prompt": "Cinematic 3D commercial video prompt:\nScene: Premium matte black smartphone slowly rotating 360 degrees in mid-air.\nCamera: Seamless macro rotation showcasing camera lenses, metallic edges and OLED screen display.\nLighting: Studio softbox gradient lighting, seamless dark background, 4k 60fps."
+  },
+  {
+    "id": "vis_17",
+    "category": "visual",
+    "title": "Bolalar Ta'lim Kitobi Uchun Iliq Akvarel Illyustratsiyasi",
+    "tags": [
+      "Bolalar",
+      "Kitob",
+      "Akvarel"
+    ],
+    "prompt": "/imagine prompt: Whimsical children's storybook watercolor illustration, cheerful animal friends exploring a magical enchanted library full of glowing starry books, soft pastel textures, warm fairytale lighting, hand-drawn aesthetic --ar 4:3 --v 6.0"
+  },
+  {
+    "id": "vis_18",
+    "category": "visual",
+    "title": "E-Tijorat Qahva Stakani Studiya Suratga Olinishi",
+    "tags": [
+      "Qahva",
+      "Taom",
+      "Fotografiya"
+    ],
+    "prompt": "/imagine prompt: Gourmet hot cappuccino in a sleek ceramic cup with intricate latte art, set on rustic dark wood table, roasted coffee beans scattered, gentle aromatic steam rising, warm cozy cafe atmosphere, 50mm f/1.8 --ar 1:1 --v 6.0"
+  },
+  {
+    "id": "vis_19",
+    "category": "visual",
+    "title": "Yuqori Texnologiyali AI Serverlar Xonasi",
+    "tags": [
+      "Server",
+      "AI",
+      "Texnologiya"
+    ],
+    "prompt": "/imagine prompt: Modern enterprise high-performance computing data center, endless corridor of glowing server racks with blinking emerald and blue fiber optic LED lights, reflective glossy floor, cinematic wide-angle symmetry, 8k render --ar 16:9 --v 6.0"
+  },
+  {
+    "id": "vis_20",
+    "category": "visual",
+    "title": "Dinamik Avtomobil Test-Drayv Reklama Roligi",
+    "tags": [
+      "Runway",
+      "Video",
+      "Avto"
+    ],
+    "prompt": "Dynamic video generation prompt:\nScene: White luxury SUV speeding along a scenic mountain serpent road at sunrise.\nCamera: High-speed tracking chase camera moving alongside the vehicle, capturing dramatic wheel motion and dust kicking up.\nLighting: Golden sunlight piercing through mountain peaks, 4k 60fps."
   }
 ];
 
@@ -1084,12 +2128,19 @@ function applyLibraryFilters() {
           <div class="lib-prompt-title">${p.title}</div>
           <div style="display:flex; gap:4px; margin-top:4px; flex-wrap:wrap;">${tagSpans}</div>
         </div>
-        <button class="lib-copy-btn" onclick="copyLibraryPrompt(this, '${p.prompt.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n')}')">
+        <button class="lib-copy-btn">
           📋 Nusxa
         </button>
       </div>
-      <div class="lib-prompt-body">${p.prompt}</div>
+      <div class="lib-prompt-body"></div>
     `;
+    const bodyEl = card.querySelector(".lib-prompt-body");
+    if (bodyEl) bodyEl.textContent = p.prompt;
+
+    const copyBtn = card.querySelector(".lib-copy-btn");
+    if (copyBtn) {
+      copyBtn.onclick = () => copyLibraryPrompt(copyBtn, p.prompt);
+    }
     container.appendChild(card);
   });
 }
