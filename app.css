@@ -65,7 +65,7 @@ body {
   max-width: 500px;
   min-height: 100vh;
   background-color: var(--bg-main);
-  padding: 12px 16px 40px 16px;
+  padding: 12px 16px 95px 16px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -893,4 +893,151 @@ body {
 
 .pdf-promo-btn:active {
   transform: scale(0.97);
+}
+
+/* =============================================================================
+   6. STICKY BOTTOM NAVIGATION BAR (TMA Native Bottom Bar)
+   ============================================================================= */
+.bottom-nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 500px;
+  background: rgba(10, 14, 23, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) 12px;
+  z-index: 999;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  min-width: 70px;
+}
+
+.bottom-nav-item span.icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.bottom-nav-item.active {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+}
+
+.bottom-nav-item:active {
+  transform: scale(0.95);
+}
+
+/* =============================================================================
+   7. BACK TO MAIN MENU & IN-APP NAVIGATION ENHANCEMENTS
+   ============================================================================= */
+.hero-action-copy-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.hero-action-copy-btn:active {
+  transform: scale(0.98);
+}
+
+.reset-back-btn {
+  width: 100%;
+  padding: 11px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+  font-size: 12.5px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 12px;
+}
+
+.reset-back-btn:hover, .reset-back-btn:active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.external-actions-block {
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-top: 10px;
+  margin-top: 6px;
+}
+
+.external-actions-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.vb-top-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vb-back-home-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vb-back-home-chip:active {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
 }

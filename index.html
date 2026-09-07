@@ -109,20 +109,31 @@
 
           <div class="output-text-content" id="generatorOutputText"></div>
 
-          <!-- Actions Strip -->
-          <div class="output-actions-grid">
-            <button class="action-btn copy" id="genCopyBtn" onclick="copyGeneratorPrompt()">
-              <span>📋</span> <span id="genCopyLabel">Nusxalash</span>
-            </button>
-            <button class="action-btn chatgpt" onclick="openGeneratorInChatGPT()">
-              <span>🤖</span> <span>ChatGPT'da ochish</span>
-            </button>
-            <button class="action-btn gemini" onclick="openGeneratorInGemini()">
-              <span>✨</span> <span>Gemini'da ochish</span>
-            </button>
-            <button class="action-btn tg" onclick="shareGeneratorToTelegram()">
-              <span>✈️</span> <span>Ulashish</span>
-            </button>
+          <!-- Primary In-App Actions (No leaving the app) -->
+          <button class="hero-action-copy-btn" id="genCopyBtn" onclick="copyGeneratorPrompt()">
+            <span>📋</span> <span id="genCopyLabel">Promptni Nusxalash</span>
+          </button>
+
+          <button class="reset-back-btn" onclick="resetToNewPrompt()">
+            <span>🔄</span> <span>Yangi Prompt Yaratish / Boshiga Qaytish</span>
+          </button>
+
+          <!-- External AI Links (Clearly labeled as optional external destinations) -->
+          <div class="external-actions-block">
+            <div class="external-actions-label">
+              <span>↗️</span> <span>Tashqi ilovada ochish (ixtiyoriy):</span>
+            </div>
+            <div class="output-actions-grid">
+              <button class="action-btn chatgpt" onclick="openGeneratorInChatGPT()">
+                <span>🤖</span> <span>ChatGPT</span>
+              </button>
+              <button class="action-btn gemini" onclick="openGeneratorInGemini()">
+                <span>✨</span> <span>Gemini</span>
+              </button>
+              <button class="action-btn tg" onclick="shareGeneratorToTelegram()">
+                <span>✈️</span> <span>Do'stlarga</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -207,6 +218,26 @@
         <span>🤖</span> <span>Telegramda Bepul Olish →</span>
       </a>
     </aside>
+
+    <!-- 5. Sticky Bottom Navigation Bar (Thumb-Friendly TMA Navigation) -->
+    <nav class="bottom-nav-bar" aria-label="Asosiy boshqaruv paneli">
+      <button class="bottom-nav-item active" id="bnav-gen" onclick="switchSubnav('generator')">
+        <span class="icon">⚡</span>
+        <span>Generator</span>
+      </button>
+      <button class="bottom-nav-item" id="bnav-tpl" onclick="switchSubnav('templates')">
+        <span class="icon">🎯</span>
+        <span>Qoliplar</span>
+      </button>
+      <button class="bottom-nav-item" id="bnav-lib" onclick="switchSubnav('library')">
+        <span class="icon">📚</span>
+        <span>Kutubxona</span>
+      </button>
+      <button class="bottom-nav-item" id="bnav-home" onclick="resetToNewPrompt()">
+        <span class="icon">🏠</span>
+        <span>Boshiga</span>
+      </button>
+    </nav>
 
   </div><!-- /app-container -->
 

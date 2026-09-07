@@ -17,10 +17,56 @@ function initTelegram() {
       tg.ready();
       tg.expand();
       tg.enableClosingConfirmation();
+      if (tg.BackButton) {
+        tg.BackButton.onClick(handleBackClick);
+      }
     } catch (e) {
       console.warn("TG initialization note:", e);
     }
   }
+}
+
+function updateBackButton() {
+  const tg = getTg();
+  if (!tg?.BackButton) return;
+  const outputCard = document.getElementById("generatorOutputCard");
+  const isOutputVisible = outputCard && outputCard.style.display === "block";
+  const isNotHome = (currentSubnav !== "generator") || isOutputVisible;
+  if (isNotHome) {
+    tg.BackButton.show();
+  } else {
+    tg.BackButton.hide();
+  }
+}
+
+function handleBackClick() {
+  triggerHaptic("light");
+  const outputCard = document.getElementById("generatorOutputCard");
+  const isOutputVisible = outputCard && outputCard.style.display === "block";
+
+  if (isOutputVisible && currentSubnav === "generator") {
+    resetToNewPrompt();
+  } else {
+    switchSubnav("generator");
+  }
+}
+
+function resetToNewPrompt() {
+  triggerHaptic("light");
+  const outputCard = document.getElementById("generatorOutputCard");
+  if (outputCard) {
+    outputCard.style.display = "none";
+  }
+  const inputEl = document.getElementById("generatorInput");
+  if (inputEl) {
+    inputEl.value = "";
+    inputEl.focus();
+  }
+  currentGeneratedPrompt = "";
+  switchSubnav("generator");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  updateBackButton();
+  showToast("Yangi prompt maydoni tayyor! ✨");
 }
 
 function triggerHaptic(type = "light") {
@@ -111,6 +157,10 @@ function switchSubnav(navKey) {
   const btnTpl = document.getElementById("tabBtnTemplates");
   const btnLib = document.getElementById("tabBtnLibrary");
 
+  const bnavGen = document.getElementById("bnav-gen");
+  const bnavTpl = document.getElementById("bnav-tpl");
+  const bnavLib = document.getElementById("bnav-lib");
+
   const viewGen = document.getElementById("generatorView");
   const viewTpl = document.getElementById("templatesView");
   const viewLib = document.getElementById("libraryView");
@@ -118,6 +168,10 @@ function switchSubnav(navKey) {
   if (btnGen) btnGen.classList.toggle("active", navKey === "generator");
   if (btnTpl) btnTpl.classList.toggle("active", navKey === "templates");
   if (btnLib) btnLib.classList.toggle("active", navKey === "library");
+
+  if (bnavGen) bnavGen.classList.toggle("active", navKey === "generator");
+  if (bnavTpl) bnavTpl.classList.toggle("active", navKey === "templates");
+  if (bnavLib) bnavLib.classList.toggle("active", navKey === "library");
 
   if (viewGen) viewGen.style.display = (navKey === "generator" ? "flex" : "none");
   if (viewTpl) viewTpl.style.display = (navKey === "templates" ? "flex" : "none");
@@ -128,6 +182,8 @@ function switchSubnav(navKey) {
   } else if (navKey === "library") {
     applyLibraryFilters();
   }
+
+  updateBackButton();
 }
 
 // =============================================================================
@@ -217,6 +273,7 @@ function generatePrompt() {
     outputCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
+  updateBackButton();
   showToast("✨ Professional prompt tayyor!");
 }
 
@@ -772,6 +829,15 @@ function renderVariablesBuilder() {
   const liveText = buildPromptFromVariables();
 
   box.innerHTML = `
+    <div class="vb-top-nav-bar">
+      <button class="vb-back-home-chip" onclick="switchSubnav('generator')">
+        <span>🏠</span> <span>Asosiy Menyu</span>
+      </button>
+      <button class="vb-autofill-btn" onclick="fillTemplateSample()">
+        💡 Namunani to'ldirish
+      </button>
+    </div>
+
     <div class="vb-head">
       <div>
         <div class="vb-title">
@@ -779,9 +845,6 @@ function renderVariablesBuilder() {
         </div>
         <div class="vb-subtitle">${tpl.desc}</div>
       </div>
-      <button class="vb-autofill-btn" onclick="fillTemplateSample()">
-        💡 Namunani to'ldirish
-      </button>
     </div>
 
     <div class="vb-inputs-list">
@@ -796,19 +859,31 @@ function renderVariablesBuilder() {
       <div class="vb-live-preview" id="vbLivePreviewText">${liveText}</div>
     </div>
 
-    <div class="output-actions-grid">
-      <button class="action-btn copy" id="vbCopyBtn" onclick="copyTemplatePrompt(this)">
-        <span>📋</span> <span>Nusxalash</span>
-      </button>
-      <button class="action-btn chatgpt" onclick="openTemplateInChatGPT()">
-        <span>🤖</span> <span>ChatGPT'da ochish</span>
-      </button>
-      <button class="action-btn gemini" onclick="openTemplateInGemini()">
-        <span>✨</span> <span>Gemini'da ochish</span>
-      </button>
-      <button class="action-btn tg" onclick="shareTemplateToTelegram()">
-        <span>✈️</span> <span>Ulashish</span>
-      </button>
+    <!-- Primary In-App Action -->
+    <button class="hero-action-copy-btn" id="vbCopyBtn" onclick="copyTemplatePrompt(this)">
+      <span>📋</span> <span>Promptni Nusxalash</span>
+    </button>
+
+    <button class="reset-back-btn" onclick="switchSubnav('generator')">
+      <span>🏠</span> <span>Asosiy Menyu (Generator)ga Qaytish</span>
+    </button>
+
+    <!-- Optional External AI destinations -->
+    <div class="external-actions-block">
+      <div class="external-actions-label">
+        <span>↗️</span> <span>Tashqi ilovada ochish (ixtiyoriy):</span>
+      </div>
+      <div class="output-actions-grid">
+        <button class="action-btn chatgpt" onclick="openTemplateInChatGPT()">
+          <span>🤖</span> <span>ChatGPT</span>
+        </button>
+        <button class="action-btn gemini" onclick="openTemplateInGemini()">
+          <span>✨</span> <span>Gemini</span>
+        </button>
+        <button class="action-btn tg" onclick="shareTemplateToTelegram()">
+          <span>✈️</span> <span>Do'stlarga</span>
+        </button>
+      </div>
     </div>
   `;
 }
