@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- App Styles -->
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="app.css?v=2.0.1">
 </head>
 <body>
 
@@ -53,10 +53,10 @@
         <span>⚡</span> <span>AI Generator</span>
       </button>
       <button class="subnav-btn" id="tabBtnTemplates" onclick="switchSubnav('templates')">
-        <span>🎯</span> <span>Biznes Qoliplar</span>
+        <span>🎯</span> <span>Biznes Qoliplar (11)</span>
       </button>
       <button class="subnav-btn" id="tabBtnLibrary" onclick="switchSubnav('library')">
-        <span>📚</span> <span>Kutubxona</span>
+        <span>📚</span> <span>Kutubxona (100)</span>
       </button>
     </nav>
 
@@ -191,12 +191,12 @@
 
       <!-- Category Filter Chips -->
       <div class="categories-filter-bar" id="libCategoryChips">
-        <button class="cat-filter-btn active" onclick="filterLibrary('all', this)">Barchasi</button>
-        <button class="cat-filter-btn" onclick="filterLibrary('smm', this)">📱 SMM</button>
-        <button class="cat-filter-btn" onclick="filterLibrary('ecom', this)">🛒 E-Commerce</button>
-        <button class="cat-filter-btn" onclick="filterLibrary('biznes', this)">💼 Biznes & Didox</button>
-        <button class="cat-filter-btn" onclick="filterLibrary('it', this)">💻 IT & Kod</button>
-        <button class="cat-filter-btn" onclick="filterLibrary('visual', this)">🎨 Rasm & Video</button>
+        <button class="cat-filter-btn active" onclick="filterLibrary('all', this)">Barchasi (100)</button>
+        <button class="cat-filter-btn" onclick="filterLibrary('smm', this)">📱 SMM (20)</button>
+        <button class="cat-filter-btn" onclick="filterLibrary('ecom', this)">🛒 E-Commerce (20)</button>
+        <button class="cat-filter-btn" onclick="filterLibrary('biznes', this)">💼 Biznes (20)</button>
+        <button class="cat-filter-btn" onclick="filterLibrary('it', this)">💻 IT & Kod (20)</button>
+        <button class="cat-filter-btn" onclick="filterLibrary('visual', this)">🎨 Rasm (20)</button>
       </div>
 
       <!-- Library Cards List -->
@@ -248,7 +248,7 @@
     <span>✓</span> <span id="tmaToastText">Prompt nusxalandi!</span>
   </div>
 
-  <!-- App Logic -->
-  <script src="app.js"></script>
+  <!-- App Logic (Cache-busted for Telegram Mini-App WebView) -->
+  <script src="app.js?v=2.0.1"></script>
 </body>
 </html>
