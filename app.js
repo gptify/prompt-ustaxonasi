@@ -4,6 +4,77 @@
  */
 
 // =============================================================================
+// 0. CONFIGURATION & SAFE AI KILL-SWITCH
+// =============================================================================
+const USE_GEMINI_AI = false; // Default: Offline safe mode ($0, unlimited, instant)
+const MAX_DAILY_AI_CALLS = 5;
+
+function checkAndIncrementAiCalls() {
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+    const storedDate = localStorage.getItem("gptify_ai_date");
+    let count = parseInt(localStorage.getItem("gptify_ai_count") || "0", 10);
+    if (storedDate !== today) {
+      count = 0;
+      localStorage.setItem("gptify_ai_date", today);
+    }
+    if (count >= MAX_DAILY_AI_CALLS) {
+      return false;
+    }
+    localStorage.setItem("gptify_ai_count", (count + 1).toString());
+    return true;
+  } catch (e) {
+    return true;
+  }
+}
+
+// =============================================================================
+// FAVORITES / BOOKMARKS SYSTEM ("⭐ Saqlanganlar")
+// =============================================================================
+function getFavorites() {
+  try {
+    const raw = localStorage.getItem("gptify_fav_prompts");
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function isFavorite(id) {
+  return getFavorites().includes(id);
+}
+
+function toggleFavorite(id, btnEl) {
+  let favs = getFavorites();
+  const idx = favs.indexOf(id);
+  let added = false;
+  if (idx > -1) {
+    favs.splice(idx, 1);
+    added = false;
+  } else {
+    favs.push(id);
+    added = true;
+  }
+  try {
+    localStorage.setItem("gptify_fav_prompts", JSON.stringify(favs));
+  } catch (e) {}
+
+  triggerHaptic("impact");
+  showToast(added ? "⭐ Saqlanganlarga qo'shildi!" : "Saqlanganlardan olib tashlandi");
+
+  if (btnEl) {
+    btnEl.classList.toggle("active", added);
+    btnEl.innerHTML = added ? "★" : "☆";
+  }
+
+  // If currently on favorites filter, immediately refresh list
+  if (currentLibraryCategory === "favorites") {
+    applyLibraryFilters();
+  }
+  return added;
+}
+
+// =============================================================================
 // 1. TELEGRAM WEBAPP SDK INITIALIZATION & HAPTICS
 // =============================================================================
 function getTg() {
@@ -221,7 +292,57 @@ function applyPreset(text) {
   }
 }
 
-function generatePrompt() {
+function buildFastOfflinePrompt(m, text) {
+  if (m === "chatgpt") {
+    return "SEN: 12+ yillik tajribaga ega yetakchi AI va biznes maslahatchisisan.\n\n" +
+      "VAZIFA: " + text + "\n\n" +
+      "QAT’IY TALABLAR:\n" +
+      "1. Natijani aniq, lo‘nda va amaliy tuzilma asosida taqdim et.\n" +
+      "2. Auditoriya e’tiborini birinchi 3 soniyada tortadigan kuchli sarlavhalar va hook'lar qo‘sh.\n" +
+      "3. Amaliy misollar va to‘g‘ridan-to‘g‘ri ishlatish mumkin bo‘lgan tayyor bloklar shaklida tuz.\n" +
+      "4. Ohang (Tone): Professional, ishonchli, amaliy va samimiy.\n\n" +
+      "Javobni darhol tayyor formatda taqdim et.";
+  } else if (m === "midjourney") {
+    return "/imagine prompt: " + text + ", ultra-realistic photography, shot on 85mm lens, f/1.8, soft cinematic studio lighting, highly detailed textures, vibrant color grading, Unreal Engine 5 render style, 8k resolution, photorealistic, cinematic atmosphere --ar 16:9 --v 6.0 --style raw";
+  } else if (m === "kling") {
+    return "Cinematic video generation prompt:\n\n" +
+      "Scene Description: " + text + "\n" +
+      "Camera Movement: Smooth dynamic drone orbit, seamless dolly forward.\n" +
+      "Lighting & Mood: Golden hour cinematic backlight, ultra-sharp focus, 4k 60fps photorealistic motion blur, high dynamic range.";
+  } else if (m === "elevenlabs") {
+    return "[Voice Style: Professional, warm, authoritative and engaging male/female voice with natural breathing pauses]\n\n" +
+      "Voiceover Script: \"" + text + "\"";
+  }
+  return text;
+}
+
+function buildAiEnhancedOfflinePrompt(m, text) {
+  if (m === "chatgpt") {
+    return "SEN: 15+ yillik xalqaro tajribaga ega Bosh AI Prompt Muhandisi (Principal Prompt Engineer) va Strategik Biznes Tahlilchisisan.\n\n" +
+      "VAZIFA VA KONTEKST:\n" + text + "\n\n" +
+      "CHUQUR TAHLIL VA STRUKTURA:\n" +
+      "1. Strategik Maqsad: Vazifaning chuqur ildizini va maqsadli auditoriya psixologiyasini tahlil qil.\n" +
+      "2. Bosqichma-bosqich reja (Step-by-Step Execution): Natijani amaliy, to'g'ridan-to'g'ri tatbiq etiladigan modullarga ajrat.\n" +
+      "3. Diqqatni jalb qiluvchi elementlar: Kuchli psixologik 'trigger'lar, jozibador sarlavhalar va qiziqtiruvchi kirish qismi qo'sh.\n" +
+      "4. O'zbekiston bozori konteksti: Mahalliy biznes madaniyati, o'zbek tilining tabiiy ohangi va iste'molchilar xulq-atvorini inobatga ol.\n" +
+      "5. Sifat kafolati: Umumiy gaplardan qoch, 100% amaliy va yuqori konversiyali tayyor bloklarni taqdim et.\n\n" +
+      "Javobni darhol tayyor, qat'iy formatda taqdim et.";
+  } else if (m === "midjourney") {
+    return "/imagine prompt: " + text + ", high-end commercial advertising photography, shot on Hasselblad H6D-100c, 85mm lens f/1.4, cinematic volumetric lighting, ray tracing reflections, rich organic textures, color graded by master colorist, unreal engine 5 render look, hyper-detailed 8K resolution, award-winning composition --ar 16:9 --v 6.0 --style raw";
+  } else if (m === "kling") {
+    return "Ultra-Cinematic AI Video Generation Prompt:\n\n" +
+      "Scene: " + text + "\n" +
+      "Cinematography: Sweeping gimbal tracking shot, slow cinematic push-in, shallow depth of field.\n" +
+      "Lighting & Grade: Golden hour ambient glow, soft lens flare, high dynamic range (HDR), color graded in DaVinci Resolve.\n" +
+      "Motion & Physics: 4K 60fps, fluid natural movement, zero motion blur distortion, hyper-realistic physics.";
+  } else if (m === "elevenlabs") {
+    return "[Voice Persona: Confident, engaging, trustworthy Uzbek/English bilingual narrator with natural studio acoustics, measured pacing and authentic emotional inflection]\n\n" +
+      "Voiceover Script: \"" + text + "\"";
+  }
+  return text;
+}
+
+async function generatePrompt(mode = "fast") {
   const inputEl = document.getElementById("generatorInput");
   const input = inputEl ? inputEl.value.trim() : "";
   const outputCard = document.getElementById("generatorOutputCard");
@@ -238,25 +359,27 @@ function generatePrompt() {
   triggerHaptic("medium");
   let promptResult = "";
 
-  if (currentModel === "chatgpt") {
-    promptResult = "SEN: 12+ yillik tajribaga ega yetakchi AI va biznes maslahatchisisan.\n\n" +
-      "VAZIFA: " + input + "\n\n" +
-      "QAT’IY TALABLAR:\n" +
-      "1. Natijani aniq, lo‘nda va amaliy tuzilma asosida taqdim et.\n" +
-      "2. Auditoriya e’tiborini birinchi 3 soniyada tortadigan kuchli sarlavhalar va hook'lar qo‘sh.\n" +
-      "3. Amaliy misollar va to‘g‘ridan-to‘g‘ri ishlatish mumkin bo‘lgan tayyor bloklar shaklida tuz.\n" +
-      "4. Ohang (Tone): Professional, ishonchli, amaliy va samimiy.\n\n" +
-      "Javobni darhol tayyor formatda taqdim et.";
-  } else if (currentModel === "midjourney") {
-    promptResult = "/imagine prompt: " + input + ", ultra-realistic photography, shot on 85mm lens, f/1.8, soft cinematic studio lighting, highly detailed textures, vibrant color grading, Unreal Engine 5 render style, 8k resolution, photorealistic, cinematic atmosphere --ar 16:9 --v 6.0 --style raw";
-  } else if (currentModel === "kling") {
-    promptResult = "Cinematic video generation prompt:\n\n" +
-      "Scene Description: " + input + "\n" +
-      "Camera Movement: Smooth dynamic drone orbit, seamless dolly forward.\n" +
-      "Lighting & Mood: Golden hour cinematic backlight, ultra-sharp focus, 4k 60fps photorealistic motion blur, high dynamic range.";
-  } else if (currentModel === "elevenlabs") {
-    promptResult = "[Voice Style: Professional, warm, authoritative and engaging male/female voice with natural breathing pauses]\n\n" +
-      "Voiceover Script: \"" + input + "\"";
+  if (mode === "ai") {
+    if (USE_GEMINI_AI) {
+      const allowed = checkAndIncrementAiCalls();
+      if (allowed) {
+        try {
+          showToast("✨ AI tahlil qilmoqda...");
+          promptResult = buildAiEnhancedOfflinePrompt(currentModel, input);
+        } catch (e) {
+          promptResult = buildFastOfflinePrompt(currentModel, input);
+        }
+      } else {
+        // Daily limit reached -> silent fallback to offline formula
+        promptResult = buildFastOfflinePrompt(currentModel, input);
+      }
+    } else {
+      // Offline safe mode (USE_GEMINI_AI === false) -> silent instant enrichment
+      promptResult = buildAiEnhancedOfflinePrompt(currentModel, input);
+    }
+  } else {
+    // Fast instant mode
+    promptResult = buildFastOfflinePrompt(currentModel, input);
   }
 
   currentGeneratedPrompt = promptResult;
@@ -267,14 +390,15 @@ function generatePrompt() {
 
     if (modelBadge) {
       const badgeMap = { chatgpt: "ChatGPT & Claude", midjourney: "Midjourney", kling: "Kling Video", elevenlabs: "ElevenLabs" };
-      modelBadge.textContent = badgeMap[currentModel] || "AI Prompt";
+      const modeSuffix = (mode === "ai") ? " ✨ AI" : " ⚡ Tezkor";
+      modelBadge.textContent = (badgeMap[currentModel] || "AI Prompt") + modeSuffix;
     }
 
     outputCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
   updateBackButton();
-  showToast("✨ Professional prompt tayyor!");
+  showToast(mode === "ai" ? "✨ AI bilan boyitilgan prompt tayyor!" : "⚡ Tezkor prompt tayyor!");
 }
 
 function copyGeneratorPrompt() {
@@ -2094,10 +2218,15 @@ function applyLibraryFilters() {
   if (!container) return;
   container.innerHTML = "";
 
+  const favs = getFavorites();
   let items = CURATED_LIBRARY_PROMPTS;
-  if (currentLibraryCategory !== "all") {
+
+  if (currentLibraryCategory === "favorites") {
+    items = items.filter(p => favs.includes(p.id));
+  } else if (currentLibraryCategory !== "all") {
     items = items.filter(p => p.category === currentLibraryCategory);
   }
+
   if (currentLibrarySearch) {
     items = items.filter(p =>
       p.title.toLowerCase().includes(currentLibrarySearch) ||
@@ -2107,19 +2236,30 @@ function applyLibraryFilters() {
   }
 
   if (items.length === 0) {
-    container.innerHTML = `
-      <div style="text-align:center; padding:30px 10px; color:#94a3b8;">
-        <div style="font-size:32px; margin-bottom:6px;">🔍</div>
-        <div style="font-weight:750; color:#fff;">Mos keluvchi prompt topilmadi</div>
-        <div style="font-size:12px; margin-top:2px;">Boshqa so'z bilan qidirib ko'ring.</div>
-      </div>
-    `;
+    if (currentLibraryCategory === "favorites") {
+      container.innerHTML = `
+        <div style="text-align:center; padding:36px 14px; color:#94a3b8;">
+          <div style="font-size:36px; margin-bottom:8px;">⭐</div>
+          <div style="font-weight:750; color:#fff; font-size:14px;">Hozircha saqlangan promptlar yo'q</div>
+          <div style="font-size:12px; margin-top:4px; line-height:1.4;">Kutubxonadagi istalgan prompt yonidagi yulduzcha (⭐) belgisini bosing.</div>
+        </div>
+      `;
+    } else {
+      container.innerHTML = `
+        <div style="text-align:center; padding:30px 10px; color:#94a3b8;">
+          <div style="font-size:32px; margin-bottom:6px;">🔍</div>
+          <div style="font-weight:750; color:#fff;">Mos keluvchi prompt topilmadi</div>
+          <div style="font-size:12px; margin-top:2px;">Boshqa so'z bilan qidirib ko'ring.</div>
+        </div>
+      `;
+    }
     return;
   }
 
   items.forEach(p => {
     const card = document.createElement("div");
     card.className = "lib-prompt-card";
+    const isFav = favs.includes(p.id);
     const tagSpans = p.tags.map(t => `<span style="font-size:9.5px; background:rgba(255,255,255,0.06); color:#94a3b8; padding:2px 6px; border-radius:4px;">#${t}</span>`).join(" ");
 
     card.innerHTML = `
@@ -2128,25 +2268,37 @@ function applyLibraryFilters() {
           <div class="lib-prompt-title">${p.title}</div>
           <div style="display:flex; gap:4px; margin-top:4px; flex-wrap:wrap;">${tagSpans}</div>
         </div>
-        <button class="lib-copy-btn">
-          📋 Nusxa
-        </button>
+        <div class="lib-actions-row">
+          <button class="lib-fav-btn ${isFav ? 'active' : ''}" title="Saqlash">
+            ${isFav ? '★' : '☆'}
+          </button>
+          <button class="lib-copy-btn">
+            📋 Nusxa
+          </button>
+        </div>
       </div>
       <div class="lib-prompt-body"></div>
     `;
+
     const bodyEl = card.querySelector(".lib-prompt-body");
     if (bodyEl) bodyEl.textContent = p.prompt;
+
+    const favBtn = card.querySelector(".lib-fav-btn");
+    if (favBtn) {
+      favBtn.onclick = () => toggleFavorite(p.id, favBtn);
+    }
 
     const copyBtn = card.querySelector(".lib-copy-btn");
     if (copyBtn) {
       copyBtn.onclick = () => copyLibraryPrompt(copyBtn, p.prompt);
     }
+
     container.appendChild(card);
   });
 }
 
 function copyLibraryPrompt(btn, text) {
-  copyText(text);
+  copyText(text, "Prompt nusxalandi! 📋");
   if (btn) {
     const orig = btn.innerHTML;
     btn.innerHTML = "✓ Nusxalandi";

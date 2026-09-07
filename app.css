@@ -354,27 +354,43 @@ body {
   transform: scale(0.97);
 }
 
+.generate-btn-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}
+
 .generate-btn {
   width: 100%;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #ffffff;
   border: none;
   border-radius: 13px;
-  padding: 13px 18px;
-  font-size: 13.5px;
+  padding: 12px 10px;
+  font-size: 13px;
   font-weight: 850;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   transition: all 0.2s ease;
   font-family: inherit;
 }
 
+.generate-btn.fast {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+}
+
+.generate-btn.ai {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+}
+
 .generate-btn:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
 /* Prompt Output Box */
@@ -779,6 +795,42 @@ body {
   line-height: 1.3;
 }
 
+.lib-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.lib-fav-btn {
+  background: #162235;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  font-size: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  padding: 0;
+  line-height: 1;
+}
+
+.lib-fav-btn.active {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: #f59e0b;
+  color: #fbbf24;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
+}
+
+.lib-fav-btn:active {
+  transform: scale(0.92);
+}
+
 .lib-copy-btn {
   background: #162235;
   border: 1px solid rgba(56, 189, 248, 0.3);
@@ -786,6 +838,7 @@ body {
   font-size: 11px;
   font-weight: 800;
   padding: 6px 12px;
+  height: 32px;
   border-radius: 8px;
   cursor: pointer;
   white-space: nowrap;
