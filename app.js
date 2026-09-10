@@ -2175,222 +2175,222 @@ const CURATED_LIBRARY_PROMPTS = [
   {
     "id": "vis_1",
     "category": "visual",
-    "title": "Tijorat Mahsulot Studiya Fotosessiyasi (Midjourney 8K)",
+    "title": "Uzum va Instagram Uchun Mahsulot Studiya Fotosessiyasi",
     "tags": [
-      "Midjourney",
+      "Fotografiya",
       "Mahsulot",
       "Studiya"
     ],
-    "prompt": "/imagine prompt: Commercial studio product photography of a luxury perfume glass bottle, resting on minimal polished black basalt stone, soft natural water droplets, dramatic cinematic studio rim lighting, 85mm lens, f/2.8, hyper-detailed glass textures, 8k resolution, photorealistic --ar 16:9 --v 6.0 --style raw"
+    "prompt": "[MAHSULOT NOMI, masalan: charm sumka yoki asal idishi] uchun professional studiya fotosessiyasi vizual konsepsiyasini tuz: 1) Fon va kompozitsiya (minimalist, neytral ranglar); 2) Yoritish sxemasi (yumshoq diffuziya, mahsulot teksturasini ochib beruvchi yorug'lik); 3) Mahsulot joylashuvi va burchaklari (old, yon, 45 gradus makro); 4) Sotuvni oshiruvchi aksessuarlar va rekvizitlar."
   },
   {
     "id": "vis_2",
     "category": "visual",
-    "title": "Zamonaviy Minimalist Ofis Interyeri (ArchViz)",
+    "title": "Instagram Stories Reklama Banneri Dizayn Konsepsiyasi",
     "tags": [
-      "Interyer",
-      "Ofis",
+      "Banner",
+      "Stories",
       "Dizayn"
     ],
-    "prompt": "/imagine prompt: Ultra-modern luxury tech startup office interior in Tashkent, floor-to-ceiling panoramic glass windows, indoor green living plant wall, minimalist ergonomic wooden desks, warm afternoon sun rays, clean architectural visualization, 8k render --ar 16:9 --v 6.0"
+    "prompt": "[MAHSULOT/XIZMAT] sotuvi uchun 9:16 vertikal formatdagi Instagram Stories reklama banneri dizaynini rejalashtir: 1) Yuqori qismdagi ko'zni qamashtiruvchi vizual ilgak (Hero element); 2) Ranglar gammasi (diqqatni tortuvchi kontrast juftlik); 3) Sarlavha va matn iyerarxiyasi (eng ko'pi bilan 3 ta qisqa qator); 4) Pastki qismdagi bosiladigan CTA tugmasining joylashuvi."
   },
   {
     "id": "vis_3",
     "category": "visual",
-    "title": "Futuristik Elektromobil Dron Kadri (Kling / Runway)",
+    "title": "Uzum Market Infografikasi Uchun Slaydlar Vizual Rejasi",
     "tags": [
-      "Kling",
-      "Video",
-      "Avto"
+      "Infografika",
+      "Uzum",
+      "Marketplace"
     ],
-    "prompt": "Cinematic video generation prompt:\nScene: Sleek black electric supercar driving smoothly on illuminated Tashkent City highway at rainy dusk.\nCamera: Smooth dynamic low-angle drone orbit following the vehicle with anamorphic lens flare.\nLighting: Neon cyberpunk street reflections, 4k 60fps photorealistic motion blur."
+    "prompt": "[MAHSULOT] marketplace kartochkasi uchun 5 ta asosiy infografika slaydining vizual sxemasini tuz: 1-slayd: Bosh rasm (Mahsulot 3D ko'rinishi va 3 ta asosiy yutuq ikonkasi); 2-slayd: Aniq o'lchamlari va materiallar tarkibi; 3-slayd: Ishlatilish jarayoni (Lifestyle kadr); 4-slayd: Nega biz? (Kafolat va qadoq); 5-slayd: Mijozlar oladigan to'liq komplektatsiya."
   },
   {
     "id": "vis_4",
     "category": "visual",
-    "title": "Korporativ Ovozlashtirish Ssenariysi (ElevenLabs)",
+    "title": "Telegram Kanal Posti Uchun Chiroyli Muqova (Cover)",
     "tags": [
-      "ElevenLabs",
-      "Ovoz",
-      "Audio"
+      "Telegram",
+      "Muqova",
+      "Post"
     ],
-    "prompt": "[Voice Style: Warm, confident, professional and authoritative male narrator with native Uzbek accent and natural pauses]\nVoiceover Script: \"Kelajak texnologiyalari bugun sizning qo'lingizda. Biz biznesingizni sun'iy intellekt yordamida yangi bosqichga olib chiqamiz.\""
+    "prompt": "Telegram kanaldagi '[POST MAVZUSI]' nomli muhim tahliliy post uchun zamonaviy 16:9 formatdagi muqova (cover) tasviri g'oyasini ber: Fon rangi, markaziy ramziy 3D grafik element, sarlavha shrifti uslubi va GPTify / brend logotipi joylashuvi."
   },
   {
     "id": "vis_5",
     "category": "visual",
-    "title": "3D Izometrik Ilova Illyustratsiyasi (Isometric App)",
+    "title": "3D Izometrik Biznes / Ilova Illyustratsiyasi G'oyasi",
     "tags": [
       "3D",
       "Izometriya",
-      "Ilova"
+      "Ilyustratsiya"
     ],
-    "prompt": "/imagine prompt: Vibrant 3D isometric illustration of a modern mobile banking and AI financial app floating in digital space, glowing charts, holographic coin icons, clean smooth plastic materials, blender 3D style, pastel neon lighting on dark navy background --ar 1:1 --v 6.0"
+    "prompt": "[BIZNES YOKI ILOVA MAVZUSI, masalan: FinTech, yetkazib berish xizmati yoki CRM] mavzusida veb-sayt yoki taqdimot uchun 3D izometrik illyustratsiya kompozitsiyasini loyihalashtir: Fazoda muallaq turgan interaktiv elementlar, neon yashil va ko'k aksentlar, zamonaviy 'glossy' plastik va shisha teksturalar, va dinamik diagrammalar."
   },
   {
     "id": "vis_6",
     "category": "visual",
-    "title": "Nafis Zargarlik Buyumlari Makro Fotosurati (Macro Jewelry)",
+    "title": "Taqdimot (Pitch Deck) Uchun Professional Slayd Dizayni",
     "tags": [
-      "Zargarlik",
-      "Makro",
-      "Tilla"
+      "Taqdimot",
+      "PitchDeck",
+      "Slayd"
     ],
-    "prompt": "/imagine prompt: Extreme macro photography of a luxury 18k gold diamond ring with intricate engravings, set on raw dark silk fabric, sparkling diamond light dispersion, 100mm macro lens, ultra-sharp focus, editorial Vogue jewelry catalog aesthetic --ar 1:1 --v 6.0 --style raw"
+    "prompt": "Investorlar oldida namoyish etiladigan '[LOYIHA MAVZUSI]' taqdimoti uchun zamonaviy korporativ slayd shablonini ishlab chiq: Minimalist to'q ko'k fon, kontrastli oq va zumrad rangli matnlar, asosiy raqamlarni (metrikalarni) katta hajmda ko'rsatish, va matn o'rniga intuitiv infografik bloklar tuzilishi."
   },
   {
     "id": "vis_7",
     "category": "visual",
-    "title": "Kiberpank Neon Uslubidagi Tungi Shahar",
+    "title": "Kafolat, Sertifikat va Ishonch Belgilari (Trust Badges)",
     "tags": [
-      "Kiberpank",
-      "Neon",
-      "Shahar"
+      "Belgilar",
+      "Ishonch",
+      "Konversiya"
     ],
-    "prompt": "/imagine prompt: Atmospheric cinematic cyberpunk night city scene, glowing emerald and cyan holographic billboards, bustling futuristic bazaar, wet reflective pavement, volumetric fog, Unreal Engine 5 movie still --ar 16:9 --v 6.0"
+    "prompt": "Mahsulot sahifasida va reklama bannerlarida xaridor ishonchini 2 barobarga oshiruvchi 4 ta vizual belgi (Trust Badge) g'oyasi: 1) '100% Asl mahsulot'; 2) 'Tezkor va bepul yetkazish'; 3) '14 kun ichida almashtirish kafolati'; 4) 'Xavfsiz to'lov (Payme/Click)'. Har birining vizual ramzi va ranglari."
   },
   {
     "id": "vis_8",
     "category": "visual",
-    "title": "Qahvaxona / Restoran Brending Maketi (Branding Mockup)",
+    "title": "Kompaniya Brend Identikasi va Moodboard Tuzish",
     "tags": [
-      "Mockup",
       "Brending",
-      "Kafe"
+      "Moodboard",
+      "Ranglar"
     ],
-    "prompt": "/imagine prompt: High-end coffee shop branding mockup set on a marble counter: Kraft paper coffee bag with embossed gold logo, reusable ceramic takeaway cup, kraft business card, soft morning sunlight, top-down flatlay composition, 8k --ar 16:9 --v 6.0"
+    "prompt": "[SOHA/BIZNES NOMI] brendi uchun vizual uslub (Visual Identity) va Moodboard rejasini tuz: 1) Asosiy brend ranglari (Primary, Secondary, Accent) va ularning psixologik ma'nosi; 2) Tavsiya etiladigan shriftlar (Sarlavhalar va asosiy matn uchun); 3) Fotografiya uslubi (jonli, samimiy yoki korporativ); 4) Brendning grafik shakllari va vizual tili."
   },
   {
     "id": "vis_9",
     "category": "visual",
-    "title": "3D Pixar / Disney Animatsiya Uslubidagi Qahramon",
+    "title": "Restoran / Kafe Taomlari Food-Styling Fotosessiyasi",
     "tags": [
-      "Pixar",
-      "3D",
-      "Qahramon"
+      "FoodStyling",
+      "Restoran",
+      "Taom"
     ],
-    "prompt": "/imagine prompt: Adorable 3D animated character of an energetic young Uzbek software developer with glasses and modern national skullcap (do'ppi), holding a glowing AI laptop, Pixar Animation Studios character design style, subsurface scattering, vibrant lighting --ar 1:1 --v 6.0"
+    "prompt": "[TAOM NOMI, masalan: milliy osh, pitsa yoki maxsus desert] uchun ishtahani ochuvchi professional food-photography ssenariysini yoz: 1) Issiq bug' va yangi uzilgan masalliqlar detali; 2) Fon (rustik yog'och yoki oq marmar); 3) Yoritish (yon tomondan tabiiy quyosh nuri); 4) Kompozitsiya burchagi (45 daraja yoki tepadan Flatlay)."
   },
   {
     "id": "vis_10",
     "category": "visual",
-    "title": "LinkedIn Uchun Professional Biznes Portret",
+    "title": "LinkedIn / Rezyume Uchun Biznes Portret Kompozitsiyasi",
     "tags": [
       "Portret",
-      "LinkedIn",
-      "Biznes"
+      "Biznes",
+      "LinkedIn"
     ],
-    "prompt": "/imagine prompt: Professional corporate headshot photography of a confident modern business entrepreneur, wearing tailored charcoal blazer, soft neutral studio backdrop, Rembrandt lighting, 85mm portrait lens, natural skin texture, Forbes magazine cover aesthetic --ar 1:1 --v 6.0 --style raw"
+    "prompt": "Rahbar yoki ekspert uchun ishonchli va do'stona korporativ biznes portret (Headshot) olish bo'yicha fotografga yo'riqnoma: 1) Kiyim-kechak tavsiyasi (quyuq rangli zamonaviy pidjak, minimalizm); 2) Fon (zamonaviy shisha ofis yoki xiralashtirilgan interyer); 3) Nigoh va yuz ifodasi; 4) Rembrant uslubidagi professional studiya yoritgichi."
   },
   {
     "id": "vis_11",
     "category": "visual",
-    "title": "Instagram Stories Harakatlanuvchi 3D Abstrakt Fon",
+    "title": "DALL-E 3 / AI Bilan Fotorealistik Mahsulot Rasmi Olish",
     "tags": [
-      "Stories",
-      "Abstrakt",
-      "Fon"
+      "DALLE3",
+      "AI",
+      "Tasvir"
     ],
-    "prompt": "/imagine prompt: Abstract dynamic 3D fluid art background for mobile story, floating silky emerald ribbons and glass spheres, iridescent pastel gradients, depth of field, elegant minimalist tech luxury, 9:16 vertical ratio --ar 9:16 --v 6.0"
+    "prompt": "DALL-E 3 va ChatGPT yordamida eng yuqori sifatli rasm olish uchun o'zbek tilidagi mukammal buyruq shabloni: '[BUYUM/OBYEKT] tasvirlansin. Uslub: Fotorealistik tijorat fotosurati. Fon: [FON TAVSIFI]. Yoritish: Yumshoq studiya yorug'ligi, har bir detal o'tkir va tiniq, hech qanday xira dog'larsiz. Ranglar: Tabiiy, to'yingan va yuqori sifatli.'"
   },
   {
     "id": "vis_12",
     "category": "visual",
-    "title": "E-Tijorat Kiyimlar Moda Fotosessiyasi (Fashion Editorial)",
+    "title": "Kiyim-Kechak Modeli Uchun Lookbook Fotosessiyasi",
     "tags": [
       "Moda",
       "Kiyim",
-      "E-tijorat"
+      "Lookbook"
     ],
-    "prompt": "/imagine prompt: High-fashion editorial photography of a model wearing modern minimalist streetwear oversized hoodie, posing in brutalist concrete architectural space, harsh artistic sunlight and geometric shadows, shot on Kodak Portra 400 --ar 3:4 --v 6.0"
+    "prompt": "[KIYIM TO'PLAMI, masalan: zamonaviy ayollar kostyumi yoki kundalik streetwear] uchun mavsumiy Lookbook fotosessiyasi vizual rejasini tuz: 1) Model tanlash va qaddi-qomat pozalari; 2) Lokatsiya (zamonaviy shahar arxitekturasi yoki minimalist oq siklorama); 3) Kiyim matosi va choklarini ko'rsatuvchi yaqin kadrlari; 4) Yoritish va rang korreksiyasi."
   },
   {
     "id": "vis_13",
     "category": "visual",
-    "title": "Dinamik Sport Krossovkasi Havoda Muallaq Turishi",
+    "title": "Dinamik Sport Mahsuloti Reklama Kadri (Visual Hook)",
     "tags": [
-      "Krossovka",
       "Sport",
-      "Reklama"
+      "Reklama",
+      "Dinamika"
     ],
-    "prompt": "/imagine prompt: High-speed dynamic advertising shot of a futuristic athletic running sneaker exploding into geometric energy particles in mid-air, dark studio background with cyan rim light, floating neon dust, ultra-sharp details, Nike commercial aesthetic --ar 16:9 --v 6.0"
+    "prompt": "[SPORT MAHSULOTI, masalan: krossovka yoki trenajyor] reklamasida harakat va energiyani aks ettiruvchi vizual kadr rejasini tuz: Havoda muallaq turgan holat, sachrayotgan suv tomchilari yoki chang zarralari effekti, kontrastli orqa fon va mahsulot shaklini ajratib ko'rsatuvchi kontur yoritgich (Rim light)."
   },
   {
     "id": "vis_14",
     "category": "visual",
-    "title": "Minimalistik 3D Geometrik Logotip Dizayni",
+    "title": "Minimalistik Geometrik Logotip Kontseptsiyasi",
     "tags": [
       "Logotip",
       "Minimalizm",
-      "Vektor"
+      "Grafika"
     ],
-    "prompt": "/imagine prompt: Clean minimalist 3D geometric logo emblem representing Artificial Intelligence and Growth, stylized letter 'G' merging into an upward growth arrow, metallic matte emerald and lime green, isolated on pure dark background, vector precision --ar 1:1 --v 6.0"
+    "prompt": "[KOMPANIYA NOMI VA FAOLIYATI] uchun esda qolarli, zamonaviy va sodda logotip g'oyasini loyihalashtir: 1) Asosiy ramz (kompaniya ma'nosini ochib beruvchi 1-2 ta geometrik shakl); 2) Ranglar juftligi (masalan: chuqur zumrad yashil va oltin sariq); 3) Qora va oq fonda birdek mukammal ko'rinishi; 4) Mobil ilova ikonkasi (favicon) sifatida qulayligi."
   },
   {
     "id": "vis_15",
     "category": "visual",
-    "title": "Qadimiy Samarqand va Kelajak Uyg'unligi",
+    "title": "Zamonaviy Milliy Koloritdagi Vizual San'at (Uzbek Modern)",
     "tags": [
-      "Samarqand",
-      "Tarix",
-      "Kelajak"
+      "Milliy",
+      "Dizayn",
+      "Art"
     ],
-    "prompt": "/imagine prompt: Breathtaking architectural fusion of ancient Registan Samarkand blue tile mosaics integrated with futuristic solar energy glass domes, sunset golden hour lighting, flying gentle aerial vehicles, hyper-detailed matte painting --ar 16:9 --v 6.0"
+    "prompt": "O'zbekistonning boy madaniy merosi (atlas, adras, Samarqand va Buxoro koshin naqshlari) va zamonaviy minimalist dizaynni uyg'unlashtiruvchi vizual kompozitsiya g'oyasi: Zamonaviy geometrik chiziqlar ichiga nozik milliy ornamentlarni singdirish, iliq quyosh nuri va futuristik elementlar uyg'unligi."
   },
   {
     "id": "vis_16",
     "category": "visual",
-    "title": "Tijorat Reklama Videosida Mahsulotning 360 Aylanmasi",
+    "title": "Mahsulotning 360 Darajali Video Ko'rinishi Ssenariysi",
     "tags": [
-      "Kling",
       "Video",
-      "360"
+      "360",
+      "Mahsulot"
     ],
-    "prompt": "Cinematic 3D commercial video prompt:\nScene: Premium matte black smartphone slowly rotating 360 degrees in mid-air.\nCamera: Seamless macro rotation showcasing camera lenses, metallic edges and OLED screen display.\nLighting: Studio softbox gradient lighting, seamless dark background, 4k 60fps."
+    "prompt": "Katalog yoki qisqa video reklama uchun [MAHSULOT NOMI]ni 360 daraja barcha burchaklardan ko'rsatuvchi 15 soniyalik video rolik kadrlari: 1) Mahsulotning sekin aylanuvchi umumiy ko'rinishi; 2) Kamera yaqinlashib eng nozik detal va tugmalarni yirik planda ko'rsatishi; 3) O'lcham va material hissi; 4) Brend logotipida to'xtash."
   },
   {
     "id": "vis_17",
     "category": "visual",
-    "title": "Bolalar Ta'lim Kitobi Uchun Iliq Akvarel Illyustratsiyasi",
+    "title": "Bolalar Mahsulotlari Uchun Qiziqarli 3D Animatsion Uslub",
     "tags": [
       "Bolalar",
-      "Kitob",
-      "Akvarel"
+      "3D",
+      "Animatsiya"
     ],
-    "prompt": "/imagine prompt: Whimsical children's storybook watercolor illustration, cheerful animal friends exploring a magical enchanted library full of glowing starry books, soft pastel textures, warm fairytale lighting, hand-drawn aesthetic --ar 4:3 --v 6.0"
+    "prompt": "[BOLALAR MAHSULOTI YOKI XIZMATI] uchun ota-onalar va bolalar mehrini qozonuvchi 3D animatsion vizual uslub tavsifi: Yumshoq burchaklar, iliq va yorqin pastel ranglar, yoqimli va tabassumli multfilm qahramoni, xavfsiz va shinam atmosfera."
   },
   {
     "id": "vis_18",
     "category": "visual",
-    "title": "E-Tijorat Qahva Stakani Studiya Suratga Olinishi",
+    "title": "Veb-Sayt Hero Qismi Uchun Zamonaviy Bosh Rasm (Hero Banner)",
     "tags": [
-      "Qahva",
-      "Taom",
-      "Fotografiya"
+      "VebSayt",
+      "HeroBanner",
+      "UI"
     ],
-    "prompt": "/imagine prompt: Gourmet hot cappuccino in a sleek ceramic cup with intricate latte art, set on rustic dark wood table, roasted coffee beans scattered, gentle aromatic steam rising, warm cozy cafe atmosphere, 50mm f/1.8 --ar 1:1 --v 6.0"
+    "prompt": "[BIZNES TURI] veb-saytining birinchi ekrani (Hero Section) uchun yuqori konversiyali grafik rasm kompozitsiyasini ishlab chiq: Chap tomonda matn va CTA tugmasi uchun bo'sh joy (Negative space), o'ng tomonda asosiy mahsulot yoki xizmatning yuqori sifatli 3D/real tasviri, va brend rangidagi nozik fon gradienti."
   },
   {
     "id": "vis_19",
     "category": "visual",
-    "title": "Yuqori Texnologiyali AI Serverlar Xonasi",
+    "title": "IT & Texnologik Startap Uchun Abstrakt Ma'lumotlar Vizuali",
     "tags": [
-      "Server",
-      "AI",
-      "Texnologiya"
+      "Texnologiya",
+      "Startap",
+      "Abstrakt"
     ],
-    "prompt": "/imagine prompt: Modern enterprise high-performance computing data center, endless corridor of glowing server racks with blinking emerald and blue fiber optic LED lights, reflective glossy floor, cinematic wide-angle symmetry, 8k render --ar 16:9 --v 6.0"
+    "prompt": "Sun'iy intellekt, katta ma'lumotlar (Big Data) yoki bulutli texnologiyalar mavzusidagi taqdimot va sayt uchun abstrakt vizual tasvir: Qorong'i fonda tarmoq kabi o'zaro bog'langan yorug'lik nuqtalari, shaffof shisha kublar, va kelajak dinamikasini aks ettiruvchi nafis neon to'lqinlar."
   },
   {
     "id": "vis_20",
     "category": "visual",
-    "title": "Dinamik Avtomobil Test-Drayv Reklama Roligi",
+    "title": "Mijozga Mahsulotni Sovg'adek Taqdim Etuvchi Qadoq Vizuali",
     "tags": [
-      "Runway",
-      "Video",
-      "Avto"
+      "Qadoq",
+      "Unboxing",
+      "Sovg'a"
     ],
-    "prompt": "Dynamic video generation prompt:\nScene: White luxury SUV speeding along a scenic mountain serpent road at sunrise.\nCamera: High-speed tracking chase camera moving alongside the vehicle, capturing dramatic wheel motion and dust kicking up.\nLighting: Golden sunlight piercing through mountain peaks, 4k 60fps."
+    "prompt": "[MAHSULOT] xaridorga yetib borganda estetik zavq beruvchi qadoq va unboxing fotosurati g'oyasi: Qattiq matli quti, brend logotipi tushirilgan tilla/kumush yozuv, ichidagi nozik ipak qog'oz (tishyu), minnatdorchilik kartochkasi va mahsulotning nafis joylashuvi."
   }
 ];
 

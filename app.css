@@ -531,6 +531,8 @@ body {
   margin-bottom: 12px;
   max-height: 280px;
   overflow-y: auto;
+}
+
 .hero-action-copy-btn {
   width: 100%;
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
