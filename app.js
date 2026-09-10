@@ -263,6 +263,74 @@ function switchSubnav(navKey) {
 let currentModel = "chatgpt";
 let currentGeneratedPrompt = "";
 
+// =============================================================================
+// 2.5 DAILY PROMPT OF THE DAY SYSTEM
+// =============================================================================
+const DAILY_PROMPTS = [
+  {
+    day: "Yakshanba",
+    title: "Dam Olish Kuni va Haftalik Tahlil",
+    prompt: "O'tgan haftadagi 5 ta asosiy ish va loyihani tahlil qilib, kelasi haftada vaqtni 30% tejash va daromadni oshirish uchun shaxsiy haftalik reja (Weekly Review) tuzib ber."
+  },
+  {
+    day: "Dushanba",
+    title: "Haftani Kuchli Boshlash (Sotuv Strategiyasi)",
+    prompt: "Biznesimiz uchun dushanbadan boshlab yangi mijozlar oqimini jalb qiluvchi 3 ta noodatiy marketing taklifi va bitta kuchli sotuvchi e'lon matnini yoz."
+  },
+  {
+    day: "Seshanba",
+    title: "Reels va Kontent G'oyalari (Kopirayting)",
+    prompt: "Instagram va TikTok uchun tomoshabinni birinchi 3 soniyada to'xtatuvchi 5 ta virusli Reels g'oyasi va har biriga kutilmagan ssenariy yoz."
+  },
+  {
+    day: "Chorshanba",
+    title: "E-Commerce & Savdo Optimizatsiyasi",
+    prompt: "Uzum va onlayn do'konda savdosi sust bo'lgan mahsulotning konversiyasini 2 baravar oshirish uchun yangi jozibador sarlavha, 3 ta sotuvchi afzallik va kafolat matnini tuz."
+  },
+  {
+    day: "Payshanba",
+    title: "B2B Tijorat Taklifi (KP)",
+    prompt: "Yirik korporativ mijozga yuboriladigan, rad etib bo'lmas qisqa va amaliy tijorat taklifi (B2B Commercial Proposal) xatini yoz."
+  },
+  {
+    day: "Juma",
+    title: "Mijozlar Bilan Aloqa va Xizmat Sifati",
+    prompt: "Mavjud mijozlarga samimiy minnatdorchilik bildirish va ularni qayta xarid qilishga undovchi maxsus juma aksiyasi yoki sovg'ali xabar matnini tayyorla."
+  },
+  {
+    day: "Shanba",
+    title: "Dam Olish Kuni Aksiya va Flash-Sale",
+    prompt: "Faqat dam olish kunlari (Shanba-Yakshanba) amal qiluvchi shoshilinch chegirma (Flash Sale) uchun Telegram va Instagramga 2 ta sotuvchi post yoz."
+  }
+];
+
+function initDailyPrompt() {
+  const dayIndex = new Date().getDay();
+  const daily = DAILY_PROMPTS[dayIndex] || DAILY_PROMPTS[1];
+
+  const dayEl = document.getElementById("dailyPromptDay");
+  const textEl = document.getElementById("dailyPromptText");
+  const titleEl = document.getElementById("dailyPromptTitle");
+
+  if (dayEl) dayEl.textContent = daily.day;
+  if (titleEl) titleEl.textContent = daily.title;
+  if (textEl) textEl.textContent = `"${daily.prompt}"`;
+}
+
+function useDailyPrompt() {
+  triggerHaptic("selection");
+  const dayIndex = new Date().getDay();
+  const daily = DAILY_PROMPTS[dayIndex] || DAILY_PROMPTS[1];
+
+  const inputEl = document.getElementById("generatorInput");
+  if (inputEl) {
+    inputEl.value = daily.prompt;
+    inputEl.focus();
+    inputEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    showToast("💡 Kun prompti maydonga kiritildi!");
+  }
+}
+
 function selectModel(model, el) {
   triggerHaptic("light");
   currentModel = model;
@@ -418,6 +486,22 @@ function copyGeneratorPrompt() {
   }
 }
 
+function openGeneratorInGPTifyBot() {
+  const text = currentGeneratedPrompt || (document.getElementById("generatorOutputText")?.textContent) || "";
+  if (!text) {
+    showToast("Avval prompt yarating! ⚠️");
+    return;
+  }
+  copyText(text, "Prompt nusxalandi! Botga 'Paste' qilib yuboring 🤖");
+  const url = "https://t.me/GPTify_uz_bot?start=prompt_lab";
+  const tg = getTg();
+  if (tg?.openTelegramLink) {
+    tg.openTelegramLink(url);
+  } else {
+    openExternalUrl(url);
+  }
+}
+
 function openGeneratorInChatGPT() {
   const text = currentGeneratedPrompt || (document.getElementById("generatorOutputText")?.textContent) || "";
   if (!text) {
@@ -553,6 +637,42 @@ Instagram qidiruvida va tavsiyalarda (Explore) chiqish uchun hashtaglar va SEO i
 3. Geo-lokatsion / Mahalliy (Toshkent va O'zbekiston - 7 ta hashtag)
 4. Post tavsifiga (caption) tabiiy singdiriladigan 3 ta SEO kalit iborasi.`
   },
+  {
+    id: "tpl_smm_4",
+    category: "smm",
+    badge: "Rassilka & Aksiya",
+    title: "Telegram & Instagram Rassilka",
+    desc: "Mijozlar bazasiga o'qilishi yuqori bo'lgan va darhol buyurtmaga undovchi aksiya xabari",
+    variables: [
+      { key: "AKSIYA MAVZUSI", label: "Aksiya / Chegirma Mavzusi", placeholder: "Masalan: Kuzgi kolleksiyaga 30% chegirma", type: "text" },
+      { key: "ASOSIY FOYDA", label: "Asosiy Shart yoki Bonus", placeholder: "Masalan: 2 ta xarid qilganga bepul yetkazib berish", type: "text" },
+      { key: "DEADLINE", label: "Amal Qilish Muddati", placeholder: "Masalan: Faqat shu yakshanba soat 23:59 gacha", type: "text" },
+      { key: "HARAKAT", label: "Buyurtma Qilish Uchun Havola", placeholder: "Masalan: @menejer profiliga yozing", type: "text" }
+    ],
+    sampleData: {
+      "AKSIYA MAVZUSI": "Mavsumiy savdo: Barcha krossovkalarga 35% gacha chegirma",
+      "ASOSIY FOYDA": "Har bir xarid bilan sovg'aga maxsus paypoq va tozalovchi sprey",
+      "DEADLINE": "Faqat 3 kun: Juma, Shanba va Yakshanba kunlari",
+      "HARAKAT": "Buyurtma berish uchun @menejer_uz profiliga yozing yoki +998901234567 raqamiga qo'ng'iroq qiling"
+    },
+    template: `Sen Telegram va Instagram messenjer marketingi (Broadcast/Rassilka) bo'yicha yetakchi mutaxassissan.
+
+Mavzu: [AKSIYA MAVZUSI]
+Asosiy foyda/bonus: [ASOSIY FOYDA]
+Muddat: [DEADLINE]
+Harakat: [HARAKAT]
+
+Quyidagi qat'iy talablar asosida mijozni zeriktirmaydigan, o'qilishi oson va darhol sotib olishga undovchi 2 xil variantda rassilka xati yoz:
+
+Variant 1: Qisqa va dinamik (Telegram kanallar va guruhlar uchun, emojilar va formatlash bilan).
+Variant 2: Shaxsiy murojaat uslubidagi (Instagram Direct va mijozning shaxsiy Telegram lichkasiga jo'natish uchun).
+
+Har ikkala variantda ham:
+- Birinchi qatorda ko'zni quvontiruvchi sarlavha.
+- Aksiya sababi va mijoz nima yutishi.
+- Shoshilinchlik hissi (FOMO / Urgency): [DEADLINE].
+- Aniq harakatga chaqiruv: [HARAKAT].`
+  },
 
   // 🛒 E-Commerce & Savdo (Uzum / Wildberries)
   {
@@ -644,6 +764,34 @@ Har bir slayd uchun:
 - Slayd 3 [Texnologiya/Ichki qatlam]: Mahsulot ichki tuzilishi va materiali tushuntirishi.
 - Slayd 4 [O'lcham va Qo'llash]: O'lchamlar, foydalanish qulayligi.
 - Slayd 5 [Isbot & Kafolat]: Mijozlar tanlovi, kafolat va xavfsiz qadoq.`
+  },
+  {
+    id: "tpl_ecom_4",
+    category: "ecom",
+    badge: "Uzum CTR & Reklama",
+    title: "Uzum Reklama & Kicker Matnlari",
+    desc: "Uzum Market qidiruvida bosishlar sonini (CTR) oshiruvchi 5 ta kuchli kicker va reklama sarlavhalari",
+    variables: [
+      { key: "MAHSULOT", label: "Mahsulot Nomi", placeholder: "Masalan: Erkaklar teridan qilingan hamyoni", type: "text" },
+      { key: "NARX VA AKSIYA", label: "Narx yoki Chegirma", placeholder: "Masalan: 129,000 so'm (asl narxi 199,000 so'm)", type: "text" },
+      { key: "TOP AFZALLIK", label: "Eng Katta Ustunlik", placeholder: "Masalan: 100% tabiiy charm, sovg'abop quti, 1 kunda yetkazish", type: "text" }
+    ],
+    sampleData: {
+      "MAHSULOT": "Avtomobil uchun mini simsiz kompressor (nasos)",
+      "NARX VA AKSIYA": "245,000 so'm (40% chegirma bilan)",
+      "TOP AFZALLIK": "Avtomatik to'xtaydi, fonar va powerbank funksiyasi bor, 1 yillik kafolat"
+    },
+    template: `Sen Uzum Market reklama kabineti va marketplace marketingi bo'yicha etakchi mutaxassissan.
+
+Mahsulot: [MAHSULOT]
+Narx/Aksiya: [NARX VA AKSIYA]
+Asosiy afzallik: [TOP AFZALLIK]
+
+Uzum qidiruvida va katalogida xaridor e'tiborini tortish, bosish koeffitsienti (CTR) va savdoni oshirish uchun quyidagilarni tayyorla:
+1. 5 ta yuqori konversiyali Kicker (rasm ustiga yoki birinchi qatorga yoziladigan 2-4 so'zlik sotuvchi iboralar).
+2. 3 ta A/B test uchun qidiruv reklama sarlavhalari (Search Ads Headlines).
+3. Qisqa sotuvchi trigger: Xaridor darhol xarid qilmasa, nimani yutqazadi (FOMO).
+4. Uzum sharhlar bo'limida do'kon xaridori bilan muloqot uchun bitta qisqa minnatdorchilik xabari.`
   },
 
   // 💼 Biznes & Moliya (Didox / Boshqaruv)
@@ -743,6 +891,36 @@ Rahbariyat 2 daqiqada o'qib, muhim qaror qabul qilishi uchun ixcham, yuqori dara
 2. 🚀 Asosiy yutuqlar (Raqamlar va foizlar bilan).
 3. ⚠️ Xavf va to'siqlar (Risk Management) va taklif qilinayotgan aniq yechimlar.
 4. 🎯 Kelasi haftaning hal qiluvchi 3 ta ustuvor vazifasi.`
+  },
+  {
+    id: "tpl_biznes_4",
+    category: "biznes",
+    badge: "E'tirozlar Bilan Ishlash",
+    title: "\"Qimmat Ekan\" E'tirozini Yopish",
+    desc: "Mijoz narxni eshitib yo'qolib qolmasligi uchun qiymatni oshiruvchi 3 xil sotuv skripti",
+    variables: [
+      { key: "MAHSULOT VA NARX", label: "Mahsulot va Narxi", placeholder: "Masalan: AI integratsiya xizmati — 6,500,000 so'm", type: "text" },
+      { key: "RAQOBAT AFZALLIGI", label: "Nega Biz? (Asosiy Qiymat)", placeholder: "Masalan: 2 oyda xarajatni qoplaydi, 24/7 texnik yordam", type: "text" },
+      { key: "MIJOZ PROFILI", label: "Mijoz Yo'nalishi", placeholder: "Masalan: Chakana savdo do'koni egasi", type: "text" }
+    ],
+    sampleData: {
+      "MAHSULOT VA NARX": "Kompaniyalar uchun CRM va AI sotuv boti — 6,500,000 so'm",
+      "RAQOBAT AFZALLIGI": "1) Sotuvlarni 35% ga oshiradi; 2) Operatorlar maoshidan oyiga 4 mln so'm tejaydi; 3) 14 kunlik bepul sinov muddati",
+      "MIJOZ PROFILI": "O'rtacha biznes egasi, har bir xarajatni ehtiyotkorlik bilan hisoblaydigan tadbirkor"
+    },
+    template: `Sen B2B va B2C savdo bo'yicha etakchi muzokara ekspertisan.
+
+Mahsulot va narx: [MAHSULOT VA NARX]
+Qiymat va ustunliklar: [RAQOBAT AFZALLIGI]
+Mijoz toifasi: [MIJOZ PROFILI]
+
+Mijoz 'Qimmat ekan' yoki 'Boshqa joyda arzonroq ekan' deganda savdoni yutqazmasdan, narxni oqlash va xaridga undash uchun 3 xil yondashuvda javob skriptini yoz:
+
+1. 'Investitsiya va Qaytuvchanlik (ROI)' texnikasi: Xarajat emas, bu sarflangan pul qanday qilib bir necha barobar ko'proq foyda olib kelishini ko'rsatish.
+2. 'Sifat va Xavf' texnikasi: Arzon variantdagi yashirin xatarlar va keyinchalik chiqadigan kutilmagan xarajatlarni yumshoq, tushunarli bayon qilish.
+3. 'Kichik Qadam' texnikasi: Bo'lib to'lash, demo-sinov yoki kichik hajm bilan boshlash taklifi.
+
+Har bir skript samimiy, mijozga bosim o'tkazmaydigan va oxirida ochiq savol bilan tugaydigan bo'lsin.`
   },
 
   // 💻 Dasturlash & IT
@@ -988,6 +1166,11 @@ function renderVariablesBuilder() {
       <span>📋</span> <span>Promptni Nusxalash</span>
     </button>
 
+    <!-- Telegram Bot Direct Action -->
+    <button class="bot-launch-action-btn" onclick="openTemplateInGPTifyBot()">
+      <span>🤖</span> <span>Botda Darhol Natija Olish (@GPTify_uz_bot)</span>
+    </button>
+
     <button class="reset-back-btn" onclick="switchSubnav('generator')">
       <span>🏠</span> <span>Asosiy Menyu (Generator)ga Qaytish</span>
     </button>
@@ -1049,6 +1232,22 @@ function copyTemplatePrompt(btn) {
       targetBtn.style.background = "";
       targetBtn.style.color = "";
     }, 2000);
+  }
+}
+
+function openTemplateInGPTifyBot() {
+  const text = buildPromptFromVariables();
+  if (!text) {
+    showToast("Avval qolipni to'ldiring! ⚠️");
+    return;
+  }
+  copyText(text, "Prompt nusxalandi! Botga 'Paste' qilib yuboring 🤖");
+  const url = "https://t.me/GPTify_uz_bot?start=prompt_lab";
+  const tg = getTg();
+  if (tg?.openTelegramLink) {
+    tg.openTelegramLink(url);
+  } else {
+    openExternalUrl(url);
   }
 }
 
@@ -2317,6 +2516,7 @@ function copyLibraryPrompt(btn, text) {
 // =============================================================================
 document.addEventListener("DOMContentLoaded", () => {
   initTelegram();
+  initDailyPrompt();
   renderTemplateCards("smm");
   applyLibraryFilters();
 });

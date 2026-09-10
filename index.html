@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- App Styles -->
-  <link rel="stylesheet" href="app.css?v=2.1.0">
+  <link rel="stylesheet" href="app.css?v=2.2.0">
 </head>
 <body>
 
@@ -85,6 +85,19 @@
         <!-- Input Area -->
         <textarea id="generatorInput" class="prompt-textarea" placeholder="Masalan: Yangi ochilgan IT o‘quv markazi uchun Instagramda reklama posti va qiziqtiruvchi sarlavha yozish..."></textarea>
 
+        <!-- Daily Prompt of the Day Card -->
+        <div class="daily-prompt-card" onclick="useDailyPrompt()">
+          <div class="daily-prompt-top">
+            <span class="daily-prompt-tag">💡 KUN PROMPTI</span>
+            <span class="daily-prompt-day" id="dailyPromptDay">Bugun</span>
+          </div>
+          <div class="daily-prompt-title" id="dailyPromptTitle">Haftani Kuchli Boshlash</div>
+          <div class="daily-prompt-snippet" id="dailyPromptText">"Biznesimiz uchun yangi mijozlar jalb qiluvchi..."</div>
+          <div class="daily-prompt-action">
+            <span>⚡ Bosing va darhol sinab ko'ring →</span>
+          </div>
+        </div>
+
         <!-- Quick Idea Chips -->
         <div class="presets-chips-row">
           <span class="presets-label">Tezkor:</span>
@@ -119,6 +132,11 @@
           <!-- Primary In-App Actions (No leaving the app) -->
           <button class="hero-action-copy-btn" id="genCopyBtn" onclick="copyGeneratorPrompt()">
             <span>📋</span> <span id="genCopyLabel">Promptni Nusxalash</span>
+          </button>
+
+          <!-- Telegram Bot Direct Action (Solves the "What Now?" problem) -->
+          <button class="bot-launch-action-btn" onclick="openGeneratorInGPTifyBot()">
+            <span>🤖</span> <span>Botda Darhol Natija Olish (@GPTify_uz_bot)</span>
           </button>
 
           <button class="reset-back-btn" onclick="resetToNewPrompt()">
@@ -255,6 +273,6 @@
   </div>
 
   <!-- App Logic (Cache-busted for Telegram Mini-App WebView) -->
-  <script src="app.js?v=2.1.0"></script>
+  <script src="app.js?v=2.2.0"></script>
 </body>
 </html>
